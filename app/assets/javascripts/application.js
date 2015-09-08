@@ -11,11 +11,8 @@
 // about supported directives.
 //= require angular/angular
 //= require angular-route/angular-route
-<<<<<<< HEAD
 //= require bootstrap/dist/js/bootstrap
 //= require flat-ui/dist/js/flat-ui
-=======
 //= require angular-cookie/angular-cookie.min.js
 //= require ng-token-auth/dist/ng-token-auth.min.js
->>>>>>> (user) add signup / login / logout and basic front end with angular
 //= require_tree .
