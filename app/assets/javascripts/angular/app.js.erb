@@ -1,0 +1,11 @@
+
+var app = angular.module('formidable', ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
+  // Configure Angular Routes
+  $routeProvider.
+    when('/', {
+      templateUrl: "<%= asset_path('static_pages/index.html') %>",
+      controller: 'StaticPagesCtrl'
+    })
+}]);
