@@ -10,7 +10,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 gem 'rack-cors'
-gem 'bower'
 gem 'rails_12factor', group: :production
 
 gem 'devise_token_auth'
