@@ -5,19 +5,21 @@
       <div class="list-forms text-center">
         <div class="col-xs-4">
           <h4>Selections</h4>
-          <ul>
-            <li>Text</li>
-            <li>Large Text</li>
-            <li>Checkboxes</li>
-            <li>Radioboxes</li>
-            <li>Dropdown</li>
-          </ul>
+          <h6><a href="" ng-click="add('text')">Text</a></h6>
+          <h6><a href="" ng-click="add('textarea')">Large Text</a></h6>
+          <h6><a href="" ng-click="add('check')">Checkboxes</a></h6>
+          <h6><a href="" ng-click="add('radio')">Radioboxes</a></h6>
+          <h6><a href="" ng-click="add('dropdown')">Dropdown</a></h6>
+          <h6><a href="" ng-click="add('description')">Description</a></h6>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4 form">
           <h4>Form/Report</h4>
           <form>
             <label>Form/Report Name</label>
-            <input>
+            <input placeholder="{{ name }}">
+            <ul id="formStuff" ng-repeat="content in contents">
+              
+            </ul>
           </form>
         </div>
         <div class="col-xs-4">

@@ -11,8 +11,16 @@ app.controller('FormsCreateCtrl', ['$scope', '$http','$auth','$location', functi
     html += '</a></li>'
     $('#formStuff').append(html);
   };
+
 }]);
 
-app.controller('FormsUpdateCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
+app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
   
+  url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+
+  $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
+    $scope.name = response.name;
+    $scope.contents = response.contents
+  });
+
 }]);
