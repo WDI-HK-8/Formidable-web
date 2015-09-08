@@ -1,0 +1,15 @@
+app.controller('SignUpCtrl', ['$scope','$auth','$location', function($scope,$auth,$location){
+  
+  $scope.registrationForm = {};
+  
+  $scope.signup = function(){
+    $auth.submitRegistration($scope.registrationForm).
+      then(function(response){
+        console.log(response)
+        $location.path('/');
+      }).
+      catch(function(response){
+        console.log(response)
+      });
+  }
+}])

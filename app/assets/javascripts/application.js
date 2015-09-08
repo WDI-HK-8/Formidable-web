@@ -13,4 +13,6 @@
 //= require angular-route/angular-route
 //= require bootstrap/dist/js/bootstrap
 //= require flat-ui/dist/js/flat-ui
+//= require angular-cookie/angular-cookie.min.js
+//= require ng-token-auth/dist/ng-token-auth.min.js
 //= require_tree .
