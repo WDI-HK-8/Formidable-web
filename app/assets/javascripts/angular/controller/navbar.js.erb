@@ -2,11 +2,12 @@ app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function
 
   $auth.validateUser().then(function(resp) {
     $scope.loggedIn  = true;
+    $scope.home = "dashboard"
   }).catch(function(resp) {
     $scope.loggedIn  = false;
   });
 
-    $scope.logout = function() {
+  $scope.logout = function() {
     $auth.signOut().then(function(response) {
       console.log(response);
       $window.location.href = '/';

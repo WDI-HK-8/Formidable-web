@@ -19,6 +19,15 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
     .when('/dashboard', {
       templateUrl: "<%= asset_path('forms/index.html') %>",
       controller: 'ListFormsCtrl'
+    }).when('/forms/create', {
+      templateUrl: "<%= asset_path('forms/create.html') %>",
+      controller: 'FormsCreateCtrl'
+    }).when('/forms/:id/update', {
+      templateUrl: "<%= asset_path('forms/update.html') %>",
+      controller: 'FormsUpdateCtrl'
+    }).when('/forms/:id/submission', {
+      templateUrl: "<%= asset_path('submissions/index.html') %>",
+      controller: 'SubmissionsIndexCtrl'
     });
 
   $authProvider.configure({

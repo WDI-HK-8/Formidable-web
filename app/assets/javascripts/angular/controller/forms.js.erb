@@ -1,3 +1,18 @@
-app.controller('ListFormsCtrl', ['$scope', function($scope){
+app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
+  
+}]);
+
+app.controller('FormsCreateCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
+  
+  $scope.add = function(elem) {
+    var html = '';
+    html += '<li><a href="/#/forms/create">'
+    html +=  elem
+    html += '</a></li>'
+    $('#formStuff').append(html);
+  };
+}]);
+
+app.controller('FormsUpdateCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
   
 }]);
