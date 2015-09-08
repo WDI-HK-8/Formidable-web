@@ -19,10 +19,9 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
     .when('/dashboard', {
       templateUrl: "<%= asset_path('forms/index.html') %>",
       controller: 'ListFormsCtrl'
-    })
-}]);  
+    });
 
-    $authProvider.configure({
+  $authProvider.configure({
     apiUrl: "<%= ENV['URL'] || 'http://localhost:3000' %>"
-  })
+  });
 }]);
