@@ -1,3 +1,17 @@
-app.controller('NavbarCtrl', ['$scope', '$location', function($scope, $auth, $location){
+app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function($scope, $auth, $location, $window){
 
+  $auth.validateUser().then(function(resp) {
+    $scope.loggedIn  = true;
+  }).catch(function(resp) {
+    $scope.loggedIn  = false;
+  });
+
+    $scope.logout = function() {
+    $auth.signOut().then(function(response) {
+      console.log(response);
+      $window.location.href = '/';
+    }).catch(function(response) {
+      console.log(response);
+    });
+  };
 }]);

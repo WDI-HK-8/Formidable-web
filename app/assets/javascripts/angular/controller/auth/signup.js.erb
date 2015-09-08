@@ -1,4 +1,11 @@
 app.controller('SignUpCtrl', ['$scope','$auth','$location', function($scope,$auth,$location){
+
+  var user;
+  $auth.validateUser().then(function(resp) {
+    user = resp;
+  }).catch(function(resp) {
+    
+  })
   
   $scope.registrationForm = {};
   
@@ -6,7 +13,7 @@ app.controller('SignUpCtrl', ['$scope','$auth','$location', function($scope,$aut
     $auth.submitRegistration($scope.registrationForm).
       then(function(response){
         console.log(response)
-        $location.path('/');
+        $location.path('/dashboard');
       }).
       catch(function(response){
         console.log(response)

@@ -18,6 +18,21 @@
             How it works
           </a>
         </li>
+        <li ng-hide="loggedIn">
+          <a href="/#/login">
+            Log In
+          </a>
+        </li>
+        <li ng-hide="loggedIn">
+          <a href="/#/signup">
+            Sign Up
+          </a>
+        </li>
+        <li ng-show="loggedIn">
+          <a ng-click="logout()">
+            Log Out
+          </a>
+        </li>
       </ul>
     </div>
   </div>

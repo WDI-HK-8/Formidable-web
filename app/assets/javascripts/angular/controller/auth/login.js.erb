@@ -9,7 +9,7 @@ app.controller('LogInCtrl', ['$scope', '$http','$auth','$location', function($sc
       then(function(response){
         //handle success
         console.log(response);
-        $location.path('/');
+        $location.path('/dashboard');
       }).catch(function(response){
         //handle errors
         console.log(response);
