@@ -1,0 +1,19 @@
+app.controller('LogInCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
+  
+  $scope.message = "LogIn";
+
+  $scope.loginForm = {};
+
+  $scope.login = function(){
+    $auth.submitLogin($scope.loginForm).
+      then(function(response){
+        //handle success
+        console.log(response);
+        $location.path('/');
+      }).catch(function(response){
+        //handle errors
+        console.log(response);
+      });
+  }
+
+}]);

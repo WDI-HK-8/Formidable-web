@@ -1,3 +1,16 @@
-app.controller('StaticPagesCtrl', ['$scope', function($scope){
+app.controller('StaticPagesCtrl', ['$scope','$auth', function($scope,$auth){
   $scope.message = "Hello Angular!";
+
+  $scope.logout = function(){
+    $auth.signOut().
+      then(function(response){
+        //handle success
+        console.log(response);
+        alert("You have signed out");
+      }).
+      catch(function(response){
+        //handle error
+        console.log(response.data.errors);
+      });
+  };
 }]);

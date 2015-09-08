@@ -1,15 +1,28 @@
 
-var app = angular.module('formidable', ['ngRoute']);
+var app = angular.module('formidable', ['ngRoute','ng-token-auth']);
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider','$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
   $routeProvider.
     when('/', {
       templateUrl: "<%= asset_path('static_pages/index.html') %>",
       controller: 'StaticPagesCtrl'
+    }).
+    when('/signup', {
+       templateUrl: "<%= asset_path('auth/signup.html') %>",
+       controller: 'SignUpCtrl'
+     }).
+    when('/login', {
+      templateUrl: "<%= asset_path('auth/login.html') %>",
+      controller: 'LogInCtrl'
     })
     .when('/dashboard', {
       templateUrl: "<%= asset_path('forms/index.html') %>",
       controller: 'ListFormsCtrl'
     })
 }]);  
+
+    $authProvider.configure({
+    apiUrl: "<%= ENV['URL'] || 'http://localhost:3000' %>"
+  })
+}]);

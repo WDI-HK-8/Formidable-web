@@ -6,7 +6,12 @@
   "dependencies": {
     "angular": "~1.4.5",
     "angular-route": "~1.4.5",
+<<<<<<< HEAD
     "bootstrap": "~3.3.5",
     "flat-ui": "~2.2.2"
+=======
+    "ng-token-auth": "~0.0.28",
+    "angular-cookie": "~4.0.9"
+>>>>>>> (user) add signup / login / logout and basic front end with angular
   }
 }
