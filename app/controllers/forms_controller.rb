@@ -1,15 +1,14 @@
 class FormsController < ApplicationController
   def index
-    @forms = User.find(params[:user_id]).forms
+    @forms = User.find(params[:user_id]).forms.includes(:contents)
   end
 
   def create
-    # @form = User.find(params[:user_id]).forms.create(form_params)
-    @form = Form.create(form_params)
+    @form = User.find(params[:user_id]).forms.create(form_params)
   end
 
   def show
-    @form = Form.find(params[:id])
+    @form = Form.find(params[:id]).includes(:contents)
   end
 
   def update
@@ -35,6 +34,6 @@ class FormsController < ApplicationController
   private
 
   def form_params
-    params.require(:form).permit(:name,:content)
+    params.require(:form).permit(:name)
   end
 end
