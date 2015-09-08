@@ -1,10 +1,10 @@
 class FormsController < ApplicationController
   def index
-    @forms = Company.find(params[:company_id]).forms
+    @forms = User.find(params[:user_id]).forms
   end
 
   def create
-    @form = Company.find(params[:company_id]).forms.create(form_params)
+    @form = User.find(params[:user_id]).forms.create(form_params)
   end
 
   def show
