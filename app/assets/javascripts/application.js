@@ -12,4 +12,5 @@
 //= require angular/angular
 //= require angular-route/angular-route
 //= require bootstrap/dist/js/bootstrap
+//= require flat-ui/dist/js/flat-ui
 //= require_tree .
