@@ -12,8 +12,11 @@ Formidable is a web/mobile app combo that creates the ultimate centralization an
 After that, your version of Formidable will be up and running!
 
 ## Technologies
+
 Frontend - AngularJS.
+
 Backend - Rails, Mongoid.
+
 Tools - Github, Sublime, Pivotal Tracker.
 
 ## API
