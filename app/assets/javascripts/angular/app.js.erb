@@ -8,4 +8,8 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: "<%= asset_path('static_pages/index.html') %>",
       controller: 'StaticPagesCtrl'
     })
-}]);
+    .when('/dashboard', {
+      templateUrl: "<%= asset_path('forms/index.html') %>",
+      controller: 'ListFormsCtrl'
+    })
+}]);  
