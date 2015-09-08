@@ -7,7 +7,9 @@ Formidable is a web/mobile app combo that creates the ultimate centralization an
 ## Installation instructions
 
 - Fork the repo from: git@github.com:WDI-HK-8/Formidable.git
-- Clone the git into a new directory
+- ```$ git clone <your repo>```
+- ```$ bundle install```
+- ```$ bower install```
 
 After that, your version of Formidable will be up and running!
 
