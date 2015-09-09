@@ -1,14 +1,14 @@
 class FormsController < ApplicationController
   def index
-    @forms = current_user.forms.includes(:contents)
+    @forms = User.find(params[:user_id]).forms.includes(:contents)
   end
 
   def create
-    @form = current_user.forms.create(form_params)
+    @form = User.find(params[:user_id]).forms.create(form_params)
   end
 
   def show
-    @form = Form.find(params[:id]).includes(:contents)
+    @form = Form.find(params[:id])
   end
 
   def update
