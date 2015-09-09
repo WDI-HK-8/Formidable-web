@@ -2,7 +2,7 @@
 
 ## Project description
 
-Formidable is a web/mobile app combo that creates the ultimate centralization and distribution of forms and reports for businesses. This project is a part of General Assembly's Web Development Immersive Program (WDI8). It is brought to life by Carson Long, Yohan Sihou, and Raphael Dieu.
+Formidable is a web/mobile app combo that creates the ultimate centralization and distribution of forms and reports for businesses. This project is a part of General Assembly's Web Development Immersive Program (WDI8). It is brought to life by Carson Long, Yohan Sihou, and Raphael Dieu. This is the website, you can find the Formidable mobile app at https://github.com/WDI-HK-8/Formidable-mobile.
 
 ## Installation instructions
 
