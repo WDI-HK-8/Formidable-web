@@ -8,10 +8,10 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    @submission = Submission.find(params[:id]).includes(:answers)
+    @submission = Submission.find(params[:id])
   end
 
-  def delete
+  def destroy
     @submission = Submission.find(params[:id])
     if @submission.nil?
       render json: {message: "Cannot find submission"}, status: :not_found

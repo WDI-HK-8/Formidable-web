@@ -1,4 +1,4 @@
 json.id @submission.id
-json.user_id @submission.user_id
+json.form_id @submission.form_id
 json.created_at @submission.created_at
 json.updated_at @submission.updated_at

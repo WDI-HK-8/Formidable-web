@@ -24,12 +24,11 @@ class FormsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @form = Form.find(params[:id])
     if @form.nil?
       render json: {message: "Cannot find form"}, status: :not_found
     else
-      else
       if @form.destroy
         render json: {deleted: true}, status: :success
       else
