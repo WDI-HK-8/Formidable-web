@@ -1,0 +1,28 @@
+app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window','user', function($scope, $auth, $location, $window, user){
+  
+  if(user) {
+    $scope.loggedIn = true;
+    $scope.home = "dashboard"
+  } else {
+    $scope.loggedIn  = false;
+  }
+
+  $scope.logout = function() {
+    $auth.signOut().then(function(response) {
+      console.log(response);
+      $window.location.href = '/';
+    }).catch(function(response) {
+      console.log(response);
+    });
+  };
+}]).
+factory('notify', ['$window', function(win) {
+   var msgs = [];
+   return function(msg) {
+     msgs.push(msg);
+     if (msgs.length == 3) {
+       win.alert(msgs.join("\n"));
+       msgs = [];
+     }
+   };
+ }]);
