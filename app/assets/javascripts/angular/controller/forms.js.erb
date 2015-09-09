@@ -22,3 +22,60 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','user', f
   }
 }]);
 
+app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
+
+  url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+
+  $scope.fields = [] //All the contents in the form
+
+  //List the contents
+  $scope.name = '';
+
+  $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
+    console.log(response)
+    $scope.name = response.name;
+    response.contents.forEach(function(content) {
+      $scope.fields.push(content);
+    })
+  })
+
+  //Add a new content
+  $scope.add = function(elem) {
+    $scope.content = {
+      label: '',
+      options: [],
+      category: elem.toString(),
+      index: $scope.fields.length
+    };
+
+    $http.post(url + '/forms/' + $routeParams.id + '/contents',$scope.content).success(function(response) {
+    $scope.fields.push(response);
+      console.log(response);
+    }).error(function(response) {
+      console.log(response);
+    });
+
+    console.log($scope.fields)
+  };
+
+  //Delete a content
+  $scope.delete = function(field){
+    $http.delete(url + '/contents/' + field.id).success(function(response){
+      $scope.fields.splice($scope.fields.indexOf(field),1)
+      reIndexField();
+    })
+  }
+
+  //Re-assign the index of the contents
+  var reIndexField = function(){
+    for(var i = 0; i < $scope.fields.length; i++){
+      $scope.fields[i].index = i
+      var content = $scope.fields[i];
+      $http.put(url + '/contents/' + content.id,content).success(function(response) {
+        console.log($scope.fields)
+      });
+    }
+  };
+
+}]);  
+
