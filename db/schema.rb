@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150909021516) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string   "answers"
+    t.string   "values"
     t.integer  "submission_id"
     t.integer  "content_id"
     t.datetime "created_at",    null: false
@@ -49,12 +49,12 @@ ActiveRecord::Schema.define(version: 20150909021516) do
   add_index "forms", ["user_id"], name: "index_forms_on_user_id", using: :btree
 
   create_table "submissions", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
+  add_index "submissions", ["form_id"], name: "index_submissions_on_form_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -83,5 +83,5 @@ ActiveRecord::Schema.define(version: 20150909021516) do
   add_foreign_key "answers", "submissions"
   add_foreign_key "contents", "forms"
   add_foreign_key "forms", "users"
-  add_foreign_key "submissions", "users"
+  add_foreign_key "submissions", "forms"
 end
