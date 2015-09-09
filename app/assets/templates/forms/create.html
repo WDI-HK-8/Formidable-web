@@ -17,8 +17,10 @@
           <form>
             <label>Form/Report Name</label>
             <input>
-            <ul id="formStuff">
-              
+            <ul>
+              <li ng-repeat="field in fields track by $index"><a href="/#/forms/create">
+                {{ field }}
+              </a></li>
             </ul>
           </form>
         </div>
