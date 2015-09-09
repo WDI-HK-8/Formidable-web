@@ -20,7 +20,7 @@ class ContentsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @content = Content.find(params[:id])
     if @content.nil?
       render json: {message: 'Cannot find content'}, status: :not_found
@@ -36,6 +36,6 @@ class ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:type,:index,:label,:options)
+    params.require(:content).permit(:category,:index,:label,:options)
   end
 end

@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
-  belongs_to :content, :submission
+  belongs_to :content
+  belongs_to :submission
   serialize :values
 end

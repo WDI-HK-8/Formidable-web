@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150909021516) do
 
   create_table "contents", force: :cascade do |t|
     t.integer  "index"
-    t.string   "type"
+    t.string   "category"
     t.string   "label"
     t.string   "options"
     t.integer  "form_id"
