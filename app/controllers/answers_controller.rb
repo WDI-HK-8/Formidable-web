@@ -6,6 +6,6 @@ class AnswersController < ApplicationController
 
   private
   def answer_params
-    params.require(:answer).permit(:values,:submission_id)
+    params.require(:answer).permit({:values => []},:submission_id)
   end
 end
