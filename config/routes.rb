@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   resources :forms do
+    resources :submissions
     resources :contents do
       resources :answers
     end
   end
 
-  resources :submissions
 end

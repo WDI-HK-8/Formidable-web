@@ -1,10 +1,10 @@
 class SubmissionsController < ApplicationController
   def index
-    @submissions = current_user.submissions.includes(:answers)
+    @submissions = Form.find(params[:form_id]).submissions.includes(:answers)
   end
 
   def create
-    @submission = current_user.submissions.create()
+    @submission = Form.find(params[:form_id]).submissions.create()
   end
 
   def show
@@ -12,11 +12,11 @@ class SubmissionsController < ApplicationController
   end
 
   def delete
-    @submission = Submission.find(params[:id])
-    if @submission.nil?
-      render json: {message: "Cannot find submission"}, status: :not_found
+    @submissions = Form.find(params[:form_id]).submissions
+    if @submissions.nil?
+      render json: {message: "Cannot find submissions"}, status: :not_found
     else 
-      if @submission.destroy
+      if @submissions.destroy_all
         render json: {deleted: true}, status: :success
       else
         render json: {deleted: false}, status: :bad_request
