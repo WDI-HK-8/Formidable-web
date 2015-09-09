@@ -17,7 +17,7 @@
           <ul>
             <li ng-repeat="content in form.contents track by $index">
               <a href="/#/forms/create">
-                {{ content }}
+                {{ content.category }}
               </a>
             </li>
             <li ng-repeat="field in fields track by $index"><a href="/#/forms/create">

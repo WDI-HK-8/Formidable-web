@@ -15,29 +15,3 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location', function
   }
 }]);
 
-app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
-
-  url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
-
-  $scope.fields = []
-  $scope.content = {};
-  $scope.add = function(elem) {
-    console.log()
-    $scope.fields.push(elem);
-    $http.post(url + '/forms/' + $routeParams.id + '/contents',$scope.content).success(function(response) {
-      console.log(response);
-    }).error(function(response) {
-      console.log(response);
-    })
-  };
-  
-
-  $scope.form = {};
-
-  $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
-    console.log(response)
-    $scope.form.name = response.name;
-    $scope.form.contents = response.contents
-  })
-
-}]);
