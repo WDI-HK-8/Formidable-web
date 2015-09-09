@@ -4,6 +4,7 @@ class ContentsController < ApplicationController
   end
 
   def create
+    binding.pry
     @content = Form.find(params[:form_id]).contents.create(content_params)
   end
 

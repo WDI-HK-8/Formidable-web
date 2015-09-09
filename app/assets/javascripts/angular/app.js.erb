@@ -1,6 +1,11 @@
 
 var app = angular.module('formidable', ['ngRoute','ng-token-auth']);
 
+app.factory('user', ['$auth', function($auth) {
+  var user;
+  return $auth.validateUser().$$state.value
+}]);
+
 app.config(['$routeProvider','$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
   $routeProvider.
@@ -15,17 +20,16 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
     when('/login', {
       templateUrl: "<%= asset_path('auth/login.html') %>",
       controller: 'LogInCtrl'
-    })
-    .when('/dashboard', {
+    }).
+    when('/dashboard', {
       templateUrl: "<%= asset_path('forms/index.html') %>",
       controller: 'ListFormsCtrl'
-    }).when('/forms/create', {
-      templateUrl: "<%= asset_path('forms/create.html') %>",
-      controller: 'FormsCreateCtrl'
-    }).when('/forms/:id/update', {
+    }).
+    when('/forms/:id/edit', {
       templateUrl: "<%= asset_path('forms/update.html') %>",
       controller: 'FormsUpdateCtrl'
-    }).when('/forms/:id/submission', {
+    }).
+    when('/forms/:id/submission', {
       templateUrl: "<%= asset_path('submissions/index.html') %>",
       controller: 'SubmissionsIndexCtrl'
     });
