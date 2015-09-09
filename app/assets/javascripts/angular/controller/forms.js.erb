@@ -1,3 +1,24 @@
-app.controller('ListFormsCtrl', ['$scope', function($scope){
+app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
   
+}]);
+
+app.controller('FormsCreateCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
+  $scope.fields = []
+  $scope.add = function(elem) {
+    $scope.fields.push(elem);
+  };
+
+}]);
+
+app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
+  
+  url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+
+  $scope.form = {};
+
+  $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
+    $scope.form.name = response.name;
+    $scope.form.contents = response.contents
+  });
+
 }]);

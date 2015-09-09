@@ -5,10 +5,11 @@
   "private": true,
   "dependencies": {
     "angular": "~1.4.5",
+    "angular-cookie": "~4.0.9",
     "angular-route": "~1.4.5",
     "bootstrap": "~3.3.5",
     "flat-ui": "~2.2.2",
-    "ng-token-auth": "~0.0.28",
-    "angular-cookie": "~4.0.9"
+    "jquery": "~2.1.4",
+    "ng-token-auth": "~0.0.28"
   }
 }

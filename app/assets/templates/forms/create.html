@@ -1,0 +1,33 @@
+<navbar></navbar>
+<div class="wrap-dashboard">
+  <div class="container-fluid wrap">
+    <div class="row">
+      <div class="list-forms text-center">
+        <div class="col-xs-4">
+          <h4>Selections</h4>
+          <h6><a href="" ng-click="add('text')">Text</a></h6>
+          <h6><a href="" ng-click="add('textarea')">Large Text</a></h6>
+          <h6><a href="" ng-click="add('check')">Checkboxes</a></h6>
+          <h6><a href="" ng-click="add('radio')">Radioboxes</a></h6>
+          <h6><a href="" ng-click="add('dropdown')">Dropdown</a></h6>
+          <h6><a href="" ng-click="add('description')">Description</a></h6>
+        </div>
+        <div class="col-xs-4 form">
+          <h4>Form/Report</h4>
+          <form>
+            <label>Form/Report Name</label>
+            <input>
+            <ul>
+              <li ng-repeat="field in fields track by $index"><a href="/#/forms/create">
+                {{ field }}
+              </a></li>
+            </ul>
+          </form>
+        </div>
+        <div class="col-xs-4">
+          <h4>Edit</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
