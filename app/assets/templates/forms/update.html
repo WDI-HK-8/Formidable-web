@@ -12,22 +12,18 @@
           <h6><a href="" ng-click="add('dropdown')">Dropdown</a></h6>
           <h6><a href="" ng-click="add('description')">Description</a></h6>
         </div>
-        <div class="col-xs-4 form">
-          <h4>Form/Report</h4>
-          <form>
-            <label>Form/Report Name</label>
-            <input value="{{ form.name }}">
-            <ul>
-              <li ng-repeat="content in form.contents track by $index">
-                <a href="/#/forms/create">
-                  {{ content }}
-                </a>
-              </li>
-              <li ng-repeat="field in fields track by $index"><a href="/#/forms/create">
-                {{ field }}
-              </a></li>
-            </ul>
-          </form>
+        <div class="col-xs-4">
+          <h4>{{ form.name }}</h4>
+          <ul>
+            <li ng-repeat="content in form.contents track by $index">
+              <a href="/#/forms/create">
+                {{ content }}
+              </a>
+            </li>
+            <li ng-repeat="field in fields track by $index"><a href="/#/forms/create">
+              {{ field }}
+            </a></li>
+          </ul>
         </div>
         <div class="col-xs-4">
           <h4>Edit</h4>
