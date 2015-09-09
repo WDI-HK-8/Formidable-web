@@ -17,7 +17,7 @@ class FormsController < ApplicationController
       render json: {message: "Cannot find form"}, status: :not_found
     else
       if @form.update(form_params)
-        render json: {updated: true}, status: :success
+        render json: {updated: true}
       else
         render json: {updated: false}, status: :bad_request
       end
@@ -30,7 +30,7 @@ class FormsController < ApplicationController
       render json: {message: "Cannot find form"}, status: :not_found
     else
       if @form.destroy
-        render json: {deleted: true}, status: :success
+        render json: {deleted: true}
       else
         render json: {deleted: false}, status: :bad_request
       end
