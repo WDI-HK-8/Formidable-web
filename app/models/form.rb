@@ -1,4 +1,5 @@
 class Form < ActiveRecord::Base
-  has_many :contents, :submissions
+  has_many :contents, dependent: :destroy
+  has_many :submissions, dependent: :destroy
   belongs_to :user
 end
