@@ -14,9 +14,11 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
+  $scope.form = {};
+
   $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
-    $scope.name = response.name;
-    $scope.contents = response.contents
+    $scope.form.name = response.name;
+    $scope.form.contents = response.contents
   });
 
 }]);

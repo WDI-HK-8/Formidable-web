@@ -16,9 +16,16 @@
           <h4>Form/Report</h4>
           <form>
             <label>Form/Report Name</label>
-            <input placeholder="{{ name }}">
-            <ul id="formStuff" ng-repeat="content in contents">
-              
+            <input value="{{ form.name }}">
+            <ul>
+              <li ng-repeat="content in form.contents track by $index">
+                <a href="/#/forms/create">
+                  {{ content }}
+                </a>
+              </li>
+              <li ng-repeat="field in fields track by $index"><a href="/#/forms/create">
+                {{ field }}
+              </a></li>
             </ul>
           </form>
         </div>
