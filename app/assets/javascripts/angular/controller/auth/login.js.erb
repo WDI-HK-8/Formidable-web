@@ -1,4 +1,4 @@
-app.controller('LogInCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
+app.controller('LogInCtrl', ['$scope', '$http','$auth','$location','$window', function($scope, $http, $auth, $location,$window){
   
   $scope.message = "LogIn";
 
@@ -9,7 +9,7 @@ app.controller('LogInCtrl', ['$scope', '$http','$auth','$location', function($sc
       then(function(response){
         //handle success
         console.log(response);
-        $location.path('/dashboard');
+        $window.location.href = '/#/dashboard';
       }).catch(function(response){
         //handle errors
         console.log(response);
