@@ -1,11 +1,11 @@
-app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function($scope, $auth, $location, $window){
-
-  $auth.validateUser().then(function(resp) {
-    $scope.loggedIn  = true;
+app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window','user', function($scope, $auth, $location, $window, user){
+  
+  if(user) {
+    $scope.loggedIn = true;
     $scope.home = "dashboard"
-  }).catch(function(resp) {
+  } else {
     $scope.loggedIn  = false;
-  });
+  }
 
   $scope.logout = function() {
     $auth.signOut().then(function(response) {
@@ -15,4 +15,14 @@ app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function
       console.log(response);
     });
   };
-}]);
+}]).
+factory('notify', ['$window', function(win) {
+   var msgs = [];
+   return function(msg) {
+     msgs.push(msg);
+     if (msgs.length == 3) {
+       win.alert(msgs.join("\n"));
+       msgs = [];
+     }
+   };
+ }]);
