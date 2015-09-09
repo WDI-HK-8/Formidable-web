@@ -1,6 +1,11 @@
 
 var app = angular.module('formidable', ['ngRoute','ng-token-auth']);
 
+app.factory('user', ['$auth', function($auth) {
+  var user;
+  return $auth.validateUser().$$state.value
+}]);
+
 app.config(['$routeProvider','$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
   $routeProvider.
