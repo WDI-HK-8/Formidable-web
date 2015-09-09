@@ -3,9 +3,10 @@
   <div class="container-fluid wrap">
     <div class="row">
       <div class="list-forms text-center">
-        <a class="btn btn-hg btn-primary" href="/#/forms/create">
+        <button class="btn btn-hg btn-primary" ng-click="createForm()">
           Create a form
-        </a>
+        </button>
+        <input type="text" class="form-control" placeholder="e.g. Market research" ng-model="form.name">
       </div>
     </div>
   </div>
