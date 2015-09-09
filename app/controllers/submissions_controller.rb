@@ -16,7 +16,7 @@ class SubmissionsController < ApplicationController
     if @submissions.nil?
       render json: {message: "Cannot find submissions"}, status: :not_found
     else 
-      if @submission.destroy_all
+      if @submissions.destroy_all
         render json: {deleted: true}, status: :success
       else
         render json: {deleted: false}, status: :bad_request
