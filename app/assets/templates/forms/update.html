@@ -13,16 +13,14 @@
           <h6><a href="" ng-click="add('description')">Description</a></h6>
         </div>
         <div class="col-xs-4">
-          <h4>{{ form.name }}</h4>
+          <h4>{{ name }}</h4>
           <ul>
-            <li ng-repeat="content in form.contents track by $index">
-              <a href="/#/forms/create">
-                {{ content.category }}
+            <li ng-repeat="field in fields">
+              <a href="">
+                {{ field.category }}
               </a>
+              <button ng-click="delete(field)">X</button>
             </li>
-            <li ng-repeat="field in fields track by $index"><a href="/#/forms/create">
-              {{ field }}
-            </a></li>
           </ul>
         </div>
         <div class="col-xs-4">
@@ -31,4 +29,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>  
