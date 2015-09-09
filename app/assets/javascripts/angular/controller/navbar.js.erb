@@ -1,10 +1,10 @@
 app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window','user', function($scope, $auth, $location, $window, user){
   
-  if(user) {
+  if(user.reason == "unauthorized") {
+    $scope.loggedIn  = false;
+  } else {
     $scope.loggedIn = true;
     $scope.home = "dashboard"
-  } else {
-    $scope.loggedIn  = false;
   }
 
   $scope.logout = function() {
