@@ -17,7 +17,7 @@ class SubmissionsController < ApplicationController
       render json: {message: "Cannot find submission"}, status: :not_found
     else 
       if @submission.destroy
-        render json: {deleted: true}, status: :success
+        render json: {deleted: true}
       else
         render json: {deleted: false}, status: :bad_request
       end
