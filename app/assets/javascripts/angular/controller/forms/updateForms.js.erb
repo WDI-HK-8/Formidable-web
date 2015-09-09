@@ -1,32 +1,3 @@
-app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','user', function($scope, $http, $auth, $location, user){
-  
-  url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
-
-  $scope.noForms = false;
-
-  $scope.form = {};
-  $scope.createForm = function() {
-    $http.post(url + '/forms',$scope.form).success(function(response) {
-      console.log(response)
-      $location.path('forms/' + response.id + '/edit');
-    }).error(function(response){
-      alert("write something you douche");
-    });
-  }
-
-  console.log(user)
-  setTimeout(function() {
-
-    $http.get(url + '/users/' + user.id + '/forms').success(function(resp) {
-      $scope.forms = resp;
-      if(!resp.length) {
-        $scope.noForms = true;
-      }
-    });
-  }, 3000)
-
-}]);
-
 app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
 
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
@@ -34,10 +5,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   $scope.fields = [] //All the contents in the form
 
   //List the contents
-  $scope.name = '';
-
   $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
-    console.log(response)
     $scope.name = response.name;
     response.contents.forEach(function(content) {
       $scope.fields.push(content);
@@ -55,12 +23,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
 
     $http.post(url + '/forms/' + $routeParams.id + '/contents',$scope.content).success(function(response) {
     $scope.fields.push(response);
-      console.log(response);
     }).error(function(response) {
-      console.log(response);
     });
-
-    console.log($scope.fields)
   };
 
   //Delete a content
@@ -77,10 +41,19 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       $scope.fields[i].index = i
       var content = $scope.fields[i];
       $http.put(url + '/contents/' + content.id,content).success(function(response) {
-        console.log($scope.fields)
       });
     }
   };
 
-}]);  
+  //Hide and Show options
+  $scope.optionsVisible = false;
 
+  $scope.displayOptions = function(field){
+    $scope.optionsVisible = true;
+    $scope.field = field
+  }
+
+  $scope.hideAndSaveOptions = function(){
+    $scope.optionsVisible = false;
+  }
+}]);

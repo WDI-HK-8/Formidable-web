@@ -1,0 +1,28 @@
+app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','user', function($scope, $http, $auth, $location, user){
+  
+  url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+
+  $scope.noForms = false;
+
+  $scope.form = {};
+  $scope.createForm = function() {
+    $http.post(url + '/forms',$scope.form).success(function(response) {
+      console.log(response)
+      $location.path('forms/' + response.id + '/edit');
+    }).error(function(response){
+      alert("write something you douche");
+    });
+  }
+
+  console.log(user)
+  setTimeout(function() {
+
+    $http.get(url + '/users/' + user.id + '/forms').success(function(resp) {
+      $scope.forms = resp;
+      if(!resp.length) {
+        $scope.noForms = true;
+      }
+    });
+  }, 3000)
+
+}]);

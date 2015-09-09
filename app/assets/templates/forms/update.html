@@ -16,15 +16,47 @@
           <h4>{{ name }}</h4>
           <ul>
             <li ng-repeat="field in fields">
+              <button ng-click="delete(field)">X</button>
               <a href="">
                 {{ field.category }}
               </a>
-              <button ng-click="delete(field)">X</button>
+              <button ng-click="displayOptions(field)">Edit</button>
             </li>
           </ul>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4" ng-show="optionsVisible">
           <h4>Edit</h4>
+          <div ng-if="field.category === 'text'">
+            <h6>options for {{ field.category }}</h6>
+            <input placeholder="label for {{field.category}}" ng-model="field.label">
+            <button ng-click="hideAndSaveOptions()">Save</button>
+          </div>
+          <div ng-if="field.category === 'textarea'">
+            <h6>options for {{ field.category }}</h6>
+            <input placeholder="label for {{field.category}}" ng-model="field.label">
+            <button ng-click="hideAndSaveOptions()">Save</button>
+          </div>
+          <div ng-if="field.category === 'check' ">
+            <h6>options for {{ field.category }}</h6>
+            <input placeholder="label for {{field.category}}" ng-model="field.label">
+            <button ng-click="hideAndSaveOptions()">Save</button>
+          </div>
+          <div ng-if="field.category === 'radio'">
+            <h6>options for {{ field.category }}</h6>
+            <input placeholder="label for {{field.category}}" ng-model="field.label">
+            <button ng-click="hideAndSaveOptions()">Save</button>
+          </div>
+          <div ng-if="field.category === 'dropdown'">
+            <h6>options for {{ field.category }}</h6>
+            <input placeholder="label for {{field.category}}" ng-model="field.label">
+            <button ng-click="hideAndSaveOptions()">Save</button>
+          </div>
+          <div ng-if="field.category === 'description'">
+            <h6>options for {{ field.category }}</h6>
+            <input placeholder="label for {{field.category}}" ng-model="field.label">
+            <button ng-click="hideAndSaveOptions()">Save</button>
+          </div>
+
         </div>
       </div>
     </div>
