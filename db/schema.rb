@@ -11,10 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908063338) do
+ActiveRecord::Schema.define(version: 20150908072535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contents", force: :cascade do |t|
+    t.integer  "index"
+    t.string   "type"
+    t.string   "label"
+    t.string   "options"
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contents", ["form_id"], name: "index_contents_on_form_id", using: :btree
+
+  create_table "forms", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "forms", ["user_id"], name: "index_forms_on_user_id", using: :btree
+
+  create_table "submissions", force: :cascade do |t|
+    t.string   "answers"
+    t.string   "submission_key"
+    t.integer  "content_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "submissions", ["content_id"], name: "index_submissions_on_content_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -39,4 +70,7 @@ ActiveRecord::Schema.define(version: 20150908063338) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
+  add_foreign_key "contents", "forms"
+  add_foreign_key "forms", "users"
+  add_foreign_key "submissions", "contents"
 end
