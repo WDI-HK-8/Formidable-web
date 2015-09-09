@@ -1,11 +1,11 @@
-app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window','user', function($scope, $auth, $location, $window, user){
+app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function($scope, $auth, $location, $window){
   
-  if(user.reason == "unauthorized") {
+  $auth.validateUser().then(function(response) {
     $scope.loggedIn  = false;
-  } else {
+  }).catch(function(response) {
     $scope.loggedIn = true;
     $scope.home = "dashboard"
-  }
+  });
 
   $scope.logout = function() {
     $auth.signOut().then(function(response) {

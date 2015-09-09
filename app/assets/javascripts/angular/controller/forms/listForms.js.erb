@@ -4,6 +4,17 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','user', f
 
   $scope.noForms = false;
 
+  $auth.validateUser().then(function(response) {
+    $http.get(url + '/users/' + response.id + '/forms').success(function(resp) {
+      $scope.forms = resp;
+      if(!resp.length) {
+        $scope.noForms = true;
+      }
+    });
+  }).catch(function(response) {
+    console.log(response);
+  });
+
   $scope.form = {};
   $scope.createForm = function() {
     $http.post(url + '/forms',$scope.form).success(function(response) {
@@ -13,16 +24,5 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','user', f
       alert("write something you douche");
     });
   }
-
-  console.log(user)
-  setTimeout(function() {
-
-    $http.get(url + '/users/' + user.id + '/forms').success(function(resp) {
-      $scope.forms = resp;
-      if(!resp.length) {
-        $scope.noForms = true;
-      }
-    });
-  }, 3000)
 
 }]);
