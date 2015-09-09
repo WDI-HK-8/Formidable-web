@@ -11,8 +11,12 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     if @content.nil?
       render json: {message: 'Cannot find content'}, status: :not_found
-    elsif @content.update(content_params)
-      render json: {updated: true}, status: :success
+    else 
+      if @content.update(content_params)
+        render json: {updated: true}, status: :success
+      else
+        render json: {updated: false}, status: :bad_request
+      end
     end
   end
 
@@ -20,8 +24,12 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     if @content.nil?
       render json: {message: 'Cannot find content'}, status: :not_found
-    elsif @content.destroy
-      render json: {deleted: true}, status: :success
+    else 
+      if @content.destroy
+        render json: {deleted: true}, status: :success
+      else
+        render json: {deleted: false}, status: :bad_request
+      end
     end
   end
 
