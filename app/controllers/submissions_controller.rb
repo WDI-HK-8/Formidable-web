@@ -1,41 +1,22 @@
 class SubmissionsController < ApplicationController
   def index
-    @submissions = Submission.where(params[:submission_key])
+    @submissions = User.find(params[:user_id]).submissions.includes(:answers)
   end
 
   def create
-    @submission = Content.find(params[:content_id]).submissions.create(submission_params)
+    @submission = User.find(params[:user_id]).submissions.create()
   end
 
   def show
-    @submission = Submission.find(params[:id])
-  end
-
-  def update
-    @submission = Submission.find(params[:id])
-    if @submission.nil?
-      render json: {message: "Cannot find submission"}, status: :not_found
-    else
-      @submission.update(submission_params)
-      render json: {updated: true}, status: :success
-    end
+    @submission = Submission.find(params[:id]).includes(:answers)
   end
 
   def delete
-    @submissions = Content.find(params[:content_id]).submissions
+    @submissions = User.find(params[:user_id]).submissions
     if @submissions.nil?
       render json: {message: "Cannot find submissions"}, status: :not_found
-    else
-      @submissions.each do |submission|
-        submission.destroy
-      end
+    elsif @submissions.destroy_all
       render json: {deleted: true}, status: :success
     end
-  end
-
-  private
-
-  def submission_params
-    params.require(:submission).permit(:answer,:submission_key)
   end
 end
