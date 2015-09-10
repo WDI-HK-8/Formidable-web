@@ -23,7 +23,7 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
       templateUrl: "<%= asset_path('forms/update.html') %>",
       controller: 'FormsUpdateCtrl'
     }).
-    when('/forms/:id/submission', {
+    when('/forms/:id/submissions', {
       templateUrl: "<%= asset_path('submissions/index.html') %>",
       controller: 'SubmissionsIndexCtrl'
     });

@@ -56,6 +56,12 @@ body {
   right: 10px;
 }
 
+.form-link > .submissions {
+  position: absolute;
+  top: 5px;
+  right: 80px;
+}
+
 .form-link > span {
   position: relative;
   top: 20px;
