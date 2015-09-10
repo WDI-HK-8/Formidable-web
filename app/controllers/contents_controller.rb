@@ -36,6 +36,6 @@ class ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:category,:index,:label,:options)
+    params.require(:content).permit(:category,:index,:label,{:options => []})
   end
 end
