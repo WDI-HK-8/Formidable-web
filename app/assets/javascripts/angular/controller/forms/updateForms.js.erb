@@ -30,7 +30,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   //Delete a content
   $scope.delete = function(field){
     $http.delete(url + '/contents/' + field.id).success(function(response){
-      $scope.fields.splice($scope.fields.indexOf(field),1)
+      $scope.fields.splice(field.index,1)
       reIndexField();
     })
   }
