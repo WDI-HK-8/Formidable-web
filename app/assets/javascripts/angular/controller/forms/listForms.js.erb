@@ -26,4 +26,17 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location', function
     });
   }
 
+  $scope.goToForm = function(form) {
+    $location.path('forms/' + response.id + '/edit');
+  }
+
+  $scope.delete = function(form) {
+    if(confirm('This will delete all data associated with this form, and is irreversible')) {
+      $scope.forms.splice($scope.forms.indexOf(form),1);
+      $http.delete(url + '/forms/' + form.id).success(function(response) {
+        console.log(response);
+      });
+    }
+  };
+
 }]);
