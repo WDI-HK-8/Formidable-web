@@ -3,7 +3,6 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
   $scope.fields = [] //All the contents in the form
-  $scope.labelInput = '';
 
   //List the contents
   $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
@@ -29,9 +28,9 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   };
 
   //Delete a content
-  $scope.delete = function(field){
+  $scope.delete = function(field,$index){
     $http.delete(url + '/contents/' + field.id).success(function(response){
-      $scope.fields.splice(field.index,1)
+      $scope.fields.splice($index,1)
       reIndexField();
     })
   }
@@ -45,29 +44,54 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       });
     }
   };
+  
+  $scope.options = []; //list of choices in a dropdown menu or checkboxes
 
-  //Show options
-  $scope.optionsVisible = false;
+  //Show Edit panel
+  $scope.editPanelVisible = false;
+  
+  $scope.displayEditPanel = function(field){
+    
+    $http.get(url + '/contents/' + field.id).success(function(response){
+      $scope.editPanelVisible = true;
+      $scope.field = response;
+      $scope.field.options.forEach(function(option){
+        $scope.options.push(option);
+      })
+      $scope.labelInput = response.label;
 
-  $scope.displayOptions = function(field){
-    $scope.optionsVisible = true;
-    $scope.field = field
+    }).error(function(repsonse){
+      console.log(response);
+    })
+  }
+
+  //Add options for dropdown
+  $scope.addOptions = function(newOptionEntry){
+    $scope.options.push(newOptionEntry);
+  }
+
+  //Delete an option
+  $scope.deleteOption = function(option,$index){
+    $scope.options.splice($index,1)
   }
 
   //Update and hide options
-  $scope.hideAndSaveOptions = function(field,labelInput){
+  $scope.hideAndSaveEditPanel = function(field,labelInput){
+    
     $scope.updatedContent = {
       label: labelInput,
-      options: [],
+      options: $scope.options,
       category: field.category,
       index: field.index
     };
     console.log("updatedContent is :", $scope.updatedContent)  
+    
     $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
       console.log(response);
+      $scope.editPanelVisible = false;
+      $scope.options = []
     }).error(function(response){
       console.log(response);
     });
-    $scope.optionsVisible = false;
   }
 }]);
