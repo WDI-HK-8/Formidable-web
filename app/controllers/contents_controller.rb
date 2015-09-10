@@ -7,6 +7,10 @@ class ContentsController < ApplicationController
     @content = Form.find(params[:form_id]).contents.create(content_params)
   end
 
+  def show
+    @content = Content.find(params[:id])
+  end
+
   def update
     @content = Content.find(params[:id])
     if @content.nil?
