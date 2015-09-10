@@ -46,6 +46,8 @@ body {
   margin: 20px;
   padding: 20px;
   text-align: center;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .form-link > .delete {
@@ -55,11 +57,13 @@ body {
 }
 
 .form-link > span {
-  vertical-align: -50px;
+  position: relative;
+  top: 20px;
 }
 
 .form-link > .btn-primary {
-  margin-top: 40px;
-  width: 90%;
-  white-space: normal;
+  position: absolute;
+  top: 74%;
+  right: 10%;
+  width: 80%;
 }
