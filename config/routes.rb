@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   get '/forms/:form_id/contents', to: 'contents#index'
   resources :contents, only: [:destroy, :show, :update]
 
-  post '/answers', to: 'answers#create'
+  post '/submissions/:submission_id/answers', to: 'answers#create'
 end
