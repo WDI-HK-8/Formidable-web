@@ -1,4 +1,4 @@
-app.controller('SignUpCtrl', ['$scope','$auth','$location', function($scope,$auth,$location){
+app.controller('SignUpCtrl', ['$scope','$auth','$location','$window', function($scope,$auth,$location,$window){
 
   var user;
   $auth.validateUser().then(function(resp) {
