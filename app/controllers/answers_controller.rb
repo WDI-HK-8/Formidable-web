@@ -7,11 +7,6 @@ class AnswersController < ApplicationController
       Content.find(content_id).answers.create(submission_id: params["submission_id"], values: answers[content_id])
     end
 
-    render json: {created: answers}
+    render json: {created: true}
   end
-
-  # private
-  # def answer_params
-  #   params.require(:answer).permit({:values => []},:submission_id)
-  # end
 end
