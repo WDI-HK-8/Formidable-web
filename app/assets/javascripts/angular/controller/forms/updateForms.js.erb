@@ -45,28 +45,33 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     }
   };
   
+  $scope.options = []; //list of choices in a dropdown menu or checkboxes
+
   //Show Edit panel
   $scope.editPanelVisible = false;
+  
   $scope.displayEditPanel = function(field){
-    $scope.editPanelVisible = true;
-    $scope.field = field;
+    
     $http.get(url + '/contents/' + field.id).success(function(response){
-      console.log(response);
+      $scope.editPanelVisible = true;
+      $scope.field = response;
+      $scope.field.options.forEach(function(option){
+        $scope.options.push(option);
+      })
+
     }).error(function(repsonse){
       console.log(response);
     })
   }
 
   //Add options for dropdown
-  $scope.options = [];
   $scope.addOptions = function(newOptionEntry){
     $scope.options.push(newOptionEntry);
-    newOptionEntry = "";
   }
 
   //Delete an option
   $scope.deleteOption = function(option){
-    $scope.options.splice(option.index,1)
+    $scope.options.splice($scope.options.indexOf(option),1)
   }
 
   //Update and hide options

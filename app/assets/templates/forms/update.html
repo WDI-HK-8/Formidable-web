@@ -20,12 +20,12 @@
               <a href="">
                 {{ field.category }}
               </a>
-              <button ng-click="displayEditPanel(field)">Edit</button>  
+              <button ng-click="displayEditPanel(field)" ng-show="!editPanelVisible">Edit</button>  
             </li>
           </ul>
         </div>
         <div class="col-xs-4" ng-show="editPanelVisible">
-          <h4>{{ field.label }} Edit</h4>
+          <h4>Edit</h4>
           
           <!--  A FAIRE: Refactor later -->
           <div ng-if="field.category === 'text'">
