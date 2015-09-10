@@ -28,9 +28,9 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   };
 
   //Delete a content
-  $scope.delete = function(field){
+  $scope.delete = function(field,$index){
     $http.delete(url + '/contents/' + field.id).success(function(response){
-      $scope.fields.splice($scope.fields.indexOf(field),1)
+      $scope.fields.splice($index,1)
       reIndexField();
     })
   }
@@ -58,6 +58,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       $scope.field.options.forEach(function(option){
         $scope.options.push(option);
       })
+      $scope.labelInput = response.label;
 
     }).error(function(repsonse){
       console.log(response);
@@ -70,8 +71,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   }
 
   //Delete an option
-  $scope.deleteOption = function(option){
-    $scope.options.splice($scope.options.indexOf(option),1)
+  $scope.deleteOption = function(option,$index){
+    $scope.options.splice($index,1)
   }
 
   //Update and hide options
