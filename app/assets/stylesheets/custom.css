@@ -36,3 +36,34 @@ body {
 .authPage {
   color: white;
 }
+
+.form-link {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  height: 200px;
+  width: 180px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.form-link > .delete {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.form-link > span {
+  position: relative;
+  top: 20px;
+}
+
+.form-link > .btn-primary {
+  position: absolute;
+  top: 74%;
+  right: 10%;
+  width: 80%;
+}

@@ -20,10 +20,24 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location', function
   $scope.createForm = function() {
     $http.post(url + '/users/' + $scope.user.id + '/forms',$scope.form).success(function(response) {
       console.log(response)
-      $location.path('forms/' + response.id + '/edit');
+      if(response.created_at) {
+        $location.path('forms/' + response.id + '/edit');
+      } else {
+        $scope.form.name = ' ';
+        alert("write a better name you douche");
+      }
     }).error(function(response){
       alert("write something you douche");
     });
   }
+
+  $scope.delete = function(form) {
+    if(confirm('This will delete all data associated with this form, and is irreversible')) {
+      $scope.forms.splice($scope.forms.indexOf(form),1);
+      $http.delete(url + '/forms/' + form.id).success(function(response) {
+        console.log(response);
+      });
+    }
+  };
 
 }]);
