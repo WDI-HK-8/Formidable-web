@@ -13,7 +13,7 @@ app.controller('SignUpCtrl', ['$scope','$auth','$location', function($scope,$aut
     $auth.submitRegistration($scope.registrationForm).
       then(function(response){
         console.log(response)
-        $location.path('/dashboard');
+        $window.location.href = '/#/dashboard';
       }).
       catch(function(response){
         console.log(response)

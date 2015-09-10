@@ -1,9 +1,10 @@
 app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function($scope, $auth, $location, $window){
-
-  $auth.validateUser().then(function(resp) {
-    $scope.loggedIn  = true;
+  
+  $auth.validateUser().then(function(response) {
+    console.log('here');
+    $scope.loggedIn = true;
     $scope.home = "dashboard"
-  }).catch(function(resp) {
+  }).catch(function(response) {
     $scope.loggedIn  = false;
   });
 

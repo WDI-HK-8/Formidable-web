@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
       render json: {message: 'Cannot find content'}, status: :not_found
     else 
       if @content.update(content_params)
-        render json: {updated: true}, status: :success
+        render json: {updated: true}
       else
         render json: {updated: false}, status: :bad_request
       end
@@ -26,7 +26,7 @@ class ContentsController < ApplicationController
       render json: {message: 'Cannot find content'}, status: :not_found
     else 
       if @content.destroy
-        render json: {deleted: true}, status: :success
+        render json: {deleted: true}
       else
         render json: {deleted: false}, status: :bad_request
       end

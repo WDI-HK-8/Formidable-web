@@ -3,9 +3,14 @@
   <div class="container-fluid wrap">
     <div class="row">
       <div class="list-forms text-center">
-        <a class="btn btn-hg btn-primary" href="/#/forms/create">
+        <input type="text" class="" placeholder="e.g. Market research" ng-model="form.name">
+        <button class="btn btn-primary" ng-click="createForm()">
           Create a form
-        </a>
+        </button>
+        <div class="col-xs-4" ng-repeat="form in forms track by $index">
+          <h2>{{ form.name }}</h2>
+        </div>
+        <h4 ng-show="noForms">No Forms</h4>
       </div>
     </div>
   </div>
