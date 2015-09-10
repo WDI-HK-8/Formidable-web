@@ -1,11 +1,12 @@
-app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','user', function($scope, $http, $auth, $location, user){
+app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
   
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
   $scope.noForms = false;
-
+  $scope.user = '';
   $auth.validateUser().then(function(response) {
-    $http.get(url + '/users/' + response.id + '/forms').success(function(resp) {
+    $scope.user = response
+    $http.get(url + '/users/' + $scope.user.id + '/forms').success(function(resp) {
       $scope.forms = resp;
       if(!resp.length) {
         $scope.noForms = true;
@@ -17,7 +18,7 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','user', f
 
   $scope.form = {};
   $scope.createForm = function() {
-    $http.post(url + '/forms',$scope.form).success(function(response) {
+    $http.post(url + '/users/' + $scope.user.id + '/forms',$scope.form).success(function(response) {
       console.log(response)
       $location.path('forms/' + response.id + '/edit');
     }).error(function(response){
