@@ -73,7 +73,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
 
   //Delete an option
   $scope.deleteOption = function(option,$index){
-    $scope.options.splice($index,1)
+    $scope.options.splice($index,1);
+    console.log($scope.options);
   }
 
   //Update and hide options
@@ -85,7 +86,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       category: field.category,
       index: field.index
     };
-    console.log("updatedContent is :", $scope.updatedContent)  
+    console.log("updatedContent is :", $scope.updatedContent)   
     
     $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
       console.log(response);

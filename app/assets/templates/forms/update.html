@@ -5,26 +5,28 @@
       <div class="list-forms text-center">
         <div class="col-xs-4">
           <h4>Selections</h4>
-          <h6><a href="" ng-click="add('text')">Text</a></h6>
-          <h6><a href="" ng-click="add('textarea')">Large Text</a></h6>
-          <h6><a href="" ng-click="add('check')">Checkboxes</a></h6>
-          <h6><a href="" ng-click="add('radio')">Radioboxes</a></h6>
-          <h6><a href="" ng-click="add('dropdown')">Dropdown</a></h6>
-          <h6><a href="" ng-click="add('description')">Description</a></h6>
+          <ul>
+            <li ng-click="add('text')" class="btn btn-embossed btn-primary">Text</li>
+            <li ng-click="add('textarea')" class="btn btn-embossed btn-primary">Large Text</li>
+            <li ng-click="add('check')" class="btn btn-embossed btn-primary">Checkboxes</li>
+            <li ng-click="add('radio')" class="btn btn-embossed btn-primary">Radioboxes</li>
+            <li ng-click="add('dropdown')" class="btn btn-embossed btn-primary">Dropdown</li>
+            <li ng-click="add('description')" class="btn btn-embossed btn-primary">Description</li>
+          </ul>
         </div>
         <div class="col-xs-4">
           <h4>{{ name }}</h4>
           <ul>
-            <li ng-repeat="field in fields track by $index" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false">
-              <button ng-click="delete(field,$index)" ng-show="!editPanelVisible && showButtons">X</button>
+            <li ng-repeat="field in fields track by $index" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="field btn btn-embossed btn-primary">
+              <button ng-click="delete(field,$index)" ng-show="!editPanelVisible && showButtons" class="btn btn-danger">X</button>
               <a href="">
                 {{ field.category }}
               </a>
-              <button ng-click="displayEditPanel(field)" ng-show="!editPanelVisible && showButtons">Edit</button>  
+              <button ng-click="displayEditPanel(field)" ng-show="!editPanelVisible && showButtons" class="btn btn-info">Edit</button>  
             </li>
           </ul>
         </div>
-        <div class="col-xs-4" ng-show="editPanelVisible">
+        <div class="col-xs-4" ng-show="editPanelVisible" id="editPanel">
           <h4>Edit</h4>
           
           <!--  A FAIRE: Refactor later -->

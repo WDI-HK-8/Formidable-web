@@ -20,7 +20,7 @@ body {
 }
 
 .wrap {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -106,3 +106,28 @@ body {
   font-size: 15px;
   opacity: 0.7;
 }
+
+li{
+  list-style-type: none;
+  width: 100%;
+  color: white;
+}
+
+ul > li > a{
+  color: white;
+  font-size: 20px;
+}
+
+ul{
+  text-align: center;
+}
+
+.btn-danger{
+  float: left;
+  border-radius: 30px;
+}
+
+.btn-info{
+  float: right;
+}
+
