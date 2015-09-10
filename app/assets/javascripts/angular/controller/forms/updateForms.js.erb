@@ -45,7 +45,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     }
   };
 
-  //Hide and Show options
+  //Show options
   $scope.optionsVisible = false;
 
   $scope.displayOptions = function(field){
@@ -53,7 +53,20 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     $scope.field = field
   }
 
-  $scope.hideAndSaveOptions = function(){
+  //Update and hide options
+  $scope.hideAndSaveOptions = function(field,labelInput){
+    $scope.updatedContent = {
+      label: labelInput,
+      options: [],
+      category: field.category,
+      index: field.index
+    };
+    console.log("updatedContent is :", $scope.updatedContent)  
+    $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
+      console.log(response);
+    }).error(function(response){
+      console.log(response);
+    });
     $scope.optionsVisible = false;
   }
 }]);

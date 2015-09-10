@@ -25,16 +25,46 @@
           </ul>
         </div>
         <div class="col-xs-4" ng-show="optionsVisible">
-          <h4>Edit</h4>
+          <h4>{{ field.label }} Edit</h4>
+
+
+
+
+
+
+
+
+          
           <div ng-if="field.category === 'text'">
             <h6>options for {{ field.category }}</h6>
-            <input placeholder="label for {{field.category}}" ng-model="field.label">
-            <button ng-click="hideAndSaveOptions()">Save</button>
+            <form ng-submit="hideAndSaveOptions(field,labelInput)">
+              <input placeholder="label for {{field.category}}" ng-model="labelInput">
+              <button type="submit">Save</button>
+            </form>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <div ng-if="field.category === 'textarea'">
             <h6>options for {{ field.category }}</h6>
-            <input placeholder="label for {{field.category}}" ng-model="field.label">
-            <button ng-click="hideAndSaveOptions()">Save</button>
+            <input placeholder="label for {{field.category}}" ng-model="label">
+            <button ng-click="hideAndSaveOptions(field)">Save</button>
           </div>
           <div ng-if="field.category === 'check' ">
             <h6>options for {{ field.category }}</h6>
