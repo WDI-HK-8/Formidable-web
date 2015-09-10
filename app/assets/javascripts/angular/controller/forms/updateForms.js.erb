@@ -3,6 +3,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
   $scope.fields = [] //All the contents in the form
+  $scope.labelInput = '';
 
   //List the contents
   $http.get(url + '/forms/' + $routeParams.id).success(function(response) {

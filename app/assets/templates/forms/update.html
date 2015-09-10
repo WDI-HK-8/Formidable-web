@@ -26,15 +26,7 @@
         </div>
         <div class="col-xs-4" ng-show="optionsVisible">
           <h4>{{ field.label }} Edit</h4>
-
-
-
-
-
-
-
-
-          
+          <!--  TODO: Refactor later -->
           <div ng-if="field.category === 'text'">
             <h6>options for {{ field.category }}</h6>
             <form ng-submit="hideAndSaveOptions(field,labelInput)">
@@ -42,51 +34,6 @@
               <button type="submit">Save</button>
             </form>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <div ng-if="field.category === 'textarea'">
-            <h6>options for {{ field.category }}</h6>
-            <input placeholder="label for {{field.category}}" ng-model="label">
-            <button ng-click="hideAndSaveOptions(field)">Save</button>
-          </div>
-          <div ng-if="field.category === 'check' ">
-            <h6>options for {{ field.category }}</h6>
-            <input placeholder="label for {{field.category}}" ng-model="field.label">
-            <button ng-click="hideAndSaveOptions()">Save</button>
-          </div>
-          <div ng-if="field.category === 'radio'">
-            <h6>options for {{ field.category }}</h6>
-            <input placeholder="label for {{field.category}}" ng-model="field.label">
-            <button ng-click="hideAndSaveOptions()">Save</button>
-          </div>
-          <div ng-if="field.category === 'dropdown'">
-            <h6>options for {{ field.category }}</h6>
-            <input placeholder="label for {{field.category}}" ng-model="field.label">
-            <button ng-click="hideAndSaveOptions()">Save</button>
-          </div>
-          <div ng-if="field.category === 'description'">
-            <h6>options for {{ field.category }}</h6>
-            <input placeholder="label for {{field.category}}" ng-model="field.label">
-            <button ng-click="hideAndSaveOptions()">Save</button>
-          </div>
-
         </div>
       </div>
     </div>
