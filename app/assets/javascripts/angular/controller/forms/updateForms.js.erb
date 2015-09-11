@@ -1,5 +1,6 @@
-app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
+app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope', function($scope, $http, $auth, $location, $routeParams, $rootScope){
 
+  $rootScope.title = 'Design';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
   $scope.fields = [] //All the contents in the form

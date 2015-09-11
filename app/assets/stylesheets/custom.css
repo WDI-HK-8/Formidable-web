@@ -10,6 +10,15 @@ body {
   margin-bottom: 0;
 }
 
+#nav-title {
+  color: white;
+  font-style: italic;
+  font-size: 23px;
+  position: absolute;
+  top: 14px;
+  right: 47vw;
+}
+
 .wrap {
   max-width: 960px;
   margin: 0 auto;
@@ -56,6 +65,12 @@ body {
   right: 10px;
 }
 
+.form-link > .submissions {
+  position: absolute;
+  top: 5px;
+  right: 80px;
+}
+
 .form-link > span {
   position: relative;
   top: 20px;
@@ -66,4 +81,28 @@ body {
   top: 74%;
   right: 10%;
   width: 80%;
+}
+
+#submission-sidebar {
+  padding: 0px;
+  height: 100vh;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.5);
+}
+
+#submission-sidebar .item {
+  width: 100%;
+  padding: 10px 20px;
+  padding-left: 30px;
+  border-bottom: 1px solid black;
+  color: rgb(52, 73, 94);
+}
+
+#submission-sidebar .item > h6{
+  margin-bottom: 0px;
+  font-size: 20px;
+}
+
+#submission-sidebar .item > p{
+  font-size: 15px;
+  opacity: 0.7;
 }

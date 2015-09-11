@@ -1,4 +1,4 @@
-app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function($scope, $auth, $location, $window){
+app.controller('NavbarCtrl', ['$scope', '$auth', '$location', '$window', '$rootScope', function($scope, $auth, $location, $window, $rootScope){
   
   $auth.validateUser().then(function(response) {
     $scope.loggedIn = true;
@@ -15,4 +15,6 @@ app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function
       console.log(response);
     });
   };
+
+  $scope.title = $rootScope.title;
 }]);

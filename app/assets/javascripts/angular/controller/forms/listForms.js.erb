@@ -1,6 +1,8 @@
-app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location', function($scope, $http, $auth, $location){
+app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootScope', function($scope, $http, $auth, $location, $rootScope){
   
+  $rootScope.title = 'Dashboard';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+
 
   $scope.noForms = false;
   $scope.user = '';
