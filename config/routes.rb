@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   post '/forms/:form_id/submissions', to: 'submissions#create'
   get '/forms/:form_id/submissions', to: 'submissions#index'
+  get '/users/:user_id/submissions', to: 'submissions#list'
   resources :submissions, only: [:destroy, :show, :update]
 
   post '/forms/:form_id/contents', to: 'contents#create'
