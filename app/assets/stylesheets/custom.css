@@ -10,6 +10,15 @@ body {
   margin-bottom: 0;
 }
 
+#nav-title {
+  color: white;
+  font-style: italic;
+  font-size: 23px;
+  position: absolute;
+  top: 14px;
+  right: 47vw;
+}
+
 .wrap {
   max-width: 960px;
   margin: 0 auto;

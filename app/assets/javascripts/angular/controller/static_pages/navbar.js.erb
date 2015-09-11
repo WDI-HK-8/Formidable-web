@@ -15,4 +15,18 @@ app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function
       console.log(response);
     });
   };
+
+  $scope.title = ''
+  switch($location.url().replace(/forms/,'').replace(/\d/,'')) {
+    case '///edit':
+      $scope.title = 'Design'
+      break;
+    case '///submissions':
+      $scope.title = 'Analyze'
+      break;
+    case '/dashboard':
+      $scope.title = 'Dashboard'
+      break;
+  }
+  console.log($scope.title)
 }]);
