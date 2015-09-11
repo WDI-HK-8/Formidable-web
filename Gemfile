@@ -16,6 +16,7 @@ gem 'devise_token_auth'
 gem 'omniauth'
 gem 'sass-rails'
 
+gem 'font-awesome-sass'
 group :development do
   gem "web-console"
   gem "better_errors"

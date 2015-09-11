@@ -29,17 +29,14 @@ body {
   margin-top: 80px;
 }
 
-.wrap-dashboard {
-  background-color: white;
-  width: 100%;
-  min-height: 600px;
-  padding-top: 60px;
-}
-
 .wrap-home {
   background-color: #33485F;
   width: 100%;
   min-height: 600px;
+}
+.wrap-dashboard {
+  background-color: white;
+  padding-top: 60px;  
 }
 
 .authPage {
@@ -107,27 +104,48 @@ body {
   opacity: 0.7;
 }
 
-li{
+
+#selections{
+  padding: 0px;
+}
+
+#selections i{
+  float: right;
+} 
+
+#editForm .contentField{
+  position: relative;
+}
+
+#editForm li{
   list-style-type: none;
   width: 100%;
   color: white;
 }
 
-ul > li > a{
+#editForm ul > li > a{
   color: white;
   font-size: 20px;
 }
 
-ul{
+#editForm ul{
   text-align: center;
 }
 
-.btn-danger{
+#editForm .deleteButton{
   float: left;
-  border-radius: 30px;
 }
 
-.btn-info{
+#editForm .deleteButton:hover{
+  color: #33485F;
+}
+
+#editForm .editButton{
   float: right;
+  padding: 0;
+}
+
+#editForm .editButton:hover{
+  color: #33485F;
 }
 

@@ -1,7 +1,27 @@
+app.filter('orderFieldBy', function(){
+ return function(input, attribute) {
+    if (!angular.isObject(input)) return input;
+
+    var array = [];
+    for(var objectKey in input) {
+        array.push(input[objectKey]);
+    }
+
+    array.sort(function(a, b){
+        a = parseInt(a[attribute]);
+        b = parseInt(b[attribute]);
+        return a - b;
+    });
+    return array;
+ }
+});
+
 app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope', function($scope, $http, $auth, $location, $routeParams, $rootScope){
 
   $rootScope.title = 'Design';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+
+  $scope.categories = ['text','textarea','dropdown'] //All the categories of content available to add to your form
 
   $scope.fields = [] //All the contents in the form
 
@@ -15,6 +35,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
 
   //Add a new content
   $scope.add = function(elem) {
+    console.log(elem);
     $scope.content = {
       label: '',
       options: [],
@@ -29,9 +50,9 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   };
 
   //Delete a content
-  $scope.delete = function(field,$index){
+  $scope.delete = function(field){
     $http.delete(url + '/contents/' + field.id).success(function(response){
-      $scope.fields.splice($index,1)
+      $scope.fields.splice($scope.fields.indexOf(field),1)
       reIndexField();
     })
   }
@@ -72,8 +93,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   }
 
   //Delete an option
-  $scope.deleteOption = function(option,$index){
-    $scope.options.splice($index,1);
+  $scope.deleteOption = function(option){
+    $scope.options.splice($scope.options.indexOf(option),1);
     console.log($scope.options);
   }
 
@@ -92,8 +113,17 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       console.log(response);
       $scope.editPanelVisible = false;
       $scope.options = []
+      $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
+      $scope.fields = []
+      $scope.name = response.name;
+      response.contents.forEach(function(content) {
+        $scope.fields.push(content);
+      })
+    })
     }).error(function(response){
       console.log(response);
     });
+
+    
   }
 }]);
