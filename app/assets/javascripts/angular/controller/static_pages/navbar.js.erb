@@ -1,4 +1,4 @@
-app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function($scope, $auth, $location, $window){
+app.controller('NavbarCtrl', ['$scope', '$auth', '$location', '$window', '$rootScope', function($scope, $auth, $location, $window, $rootScope){
   
   $auth.validateUser().then(function(response) {
     $scope.loggedIn = true;
@@ -16,17 +16,5 @@ app.controller('NavbarCtrl', ['$scope', '$auth', '$location','$window', function
     });
   };
 
-  $scope.title = ''
-  switch($location.url().replace(/forms/,'').replace(/\d/,'')) {
-    case '///edit':
-      $scope.title = 'Design'
-      break;
-    case '///submissions':
-      $scope.title = 'Analyze'
-      break;
-    case '/dashboard':
-      $scope.title = 'Dashboard'
-      break;
-  }
-  console.log($scope.title)
+  $scope.title = $rootScope.title;
 }]);
