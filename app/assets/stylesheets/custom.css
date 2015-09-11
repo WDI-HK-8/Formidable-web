@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background-color: #33485F;
 }
@@ -22,6 +27,7 @@ body {
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
+  height: 100%;
 }
 
 .home-title {
@@ -36,7 +42,8 @@ body {
 }
 .wrap-dashboard {
   background-color: white;
-  padding-top: 60px;  
+  padding-top: 60px; 
+  height: 100%; 
 }
 
 .authPage {

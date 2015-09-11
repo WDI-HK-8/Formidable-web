@@ -49,6 +49,28 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     });
   };
 
+ //Reorganise the fields array by index
+  var compare = function(a,b) {
+    if (a.index < b.index)
+      return -1;
+    if (a.index > b.index)
+      return 1;
+    return 0;
+  }
+
+  //Re-assign the index of the contents
+  var reIndexField = function(){
+    $scope.fields.sort(compare);
+    //Re-assign a new index
+    for(var i = 0; i < $scope.fields.length; i++){
+      $scope.fields[i].index = i
+      console.log($scope.fields[i].index)
+      var content = $scope.fields[i];
+      $http.put(url + '/contents/' + content.id,content).success(function(response) {
+      });
+    }
+  };
+
   //Delete a content
   $scope.delete = function(field){
     $http.delete(url + '/contents/' + field.id).success(function(response){
@@ -56,16 +78,6 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       reIndexField();
     })
   }
-
-  //Re-assign the index of the contents
-  var reIndexField = function(){
-    for(var i = 0; i < $scope.fields.length; i++){
-      $scope.fields[i].index = i
-      var content = $scope.fields[i];
-      $http.put(url + '/contents/' + content.id,content).success(function(response) {
-      });
-    }
-  };
   
   $scope.options = []; //list of choices in a dropdown menu or checkboxes
 
@@ -95,31 +107,32 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   //Delete an option
   $scope.deleteOption = function(option){
     $scope.options.splice($scope.options.indexOf(option),1);
-    console.log($scope.options);
   }
 
   //Update and hide options
   $scope.hideAndSaveEditPanel = function(field,labelInput){
-    
+    // var index = $scope.fields.indexOf(field)
     $scope.updatedContent = {
       label: labelInput,
       options: $scope.options,
       category: field.category,
       index: field.index
     };
-    console.log("updatedContent is :", $scope.updatedContent)   
     
     $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
       console.log(response);
       $scope.editPanelVisible = false;
       $scope.options = []
+      // console.log($scope.fields)
+      // $scope.fields[index] = response;
       $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
-      $scope.fields = []
-      $scope.name = response.name;
-      response.contents.forEach(function(content) {
-        $scope.fields.push(content);
+        $scope.fields = []
+        $scope.name = response.name;
+        response.contents.forEach(function(content) {
+          $scope.fields.push(content);
+        });
       })
-    })
+
     }).error(function(response){
       console.log(response);
     });
