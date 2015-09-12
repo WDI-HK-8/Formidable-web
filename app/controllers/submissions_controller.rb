@@ -25,13 +25,6 @@ class SubmissionsController < ApplicationController
   end
 
   def list
-    forms = User.find(params[:user_id]).forms
-    @submissions = []
-    forms.each do |form|
-      form.submissions.each do |submission|
-        @submissions.push submission
-      end
-    end
-    render 'index'
+    @forms = User.find(params[:user_id]).forms.joins(:submissions)
   end
 end
