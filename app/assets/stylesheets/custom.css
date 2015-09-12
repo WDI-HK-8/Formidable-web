@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background-color: #33485F;
 }
@@ -20,8 +25,9 @@ body {
 }
 
 .wrap {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
+  height: 100%;
 }
 
 .home-title {
@@ -29,17 +35,15 @@ body {
   margin-top: 80px;
 }
 
-.wrap-dashboard {
-  background-color: white;
-  width: 100%;
-  min-height: 600px;
-  padding-top: 60px;
-}
-
 .wrap-home {
   background-color: #33485F;
   width: 100%;
   min-height: 600px;
+}
+.wrap-dashboard {
+  background-color: white;
+  padding-top: 60px; 
+  height: 100%; 
 }
 
 .authPage {
@@ -106,3 +110,49 @@ body {
   font-size: 15px;
   opacity: 0.7;
 }
+
+
+#selections{
+  padding: 0px;
+}
+
+#selections i{
+  float: right;
+} 
+
+#editForm .contentField{
+  position: relative;
+}
+
+#editForm li{
+  list-style-type: none;
+  width: 100%;
+  color: white;
+}
+
+#editForm ul > li > a{
+  color: white;
+  font-size: 20px;
+}
+
+#editForm ul{
+  text-align: center;
+}
+
+#editForm .deleteButton{
+  float: left;
+}
+
+#editForm .deleteButton:hover{
+  color: #33485F;
+}
+
+#editForm .editButton{
+  float: right;
+  padding: 0;
+}
+
+#editForm .editButton:hover{
+  color: #33485F;
+}
+
