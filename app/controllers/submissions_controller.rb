@@ -23,4 +23,8 @@ class SubmissionsController < ApplicationController
       end
     end
   end
+
+  def list
+    @forms = User.find(params[:user_id]).forms.joins(:submissions)
+  end
 end
