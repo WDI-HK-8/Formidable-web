@@ -21,7 +21,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   $rootScope.title = 'Design';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
-  $scope.categories = ['text','textarea','dropdown'] //All the categories of content available to add to your form
+  $scope.categories = ['text','textarea','dropdown','checkboxes','radio','description'] //All the categories of content available to add to your form
 
   $scope.fields = [] //All the contents in the form
 
@@ -35,7 +35,6 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
 
   //Add a new content
   $scope.add = function(elem) {
-    console.log(elem);
     $scope.content = {
       label: '',
       options: [],
@@ -64,7 +63,6 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     //Re-assign a new index
     for(var i = 0; i < $scope.fields.length; i++){
       $scope.fields[i].index = i
-      console.log($scope.fields[i].index)
       var content = $scope.fields[i];
       $http.put(url + '/contents/' + content.id,content).success(function(response) {
       });
@@ -81,20 +79,23 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   
   $scope.options = []; //list of choices in a dropdown menu or checkboxes
 
-  //Show Edit panel
+  //edit panel is hidden by default
   $scope.editPanelVisible = false;
   
+  //Show Edit panel
   $scope.displayEditPanel = function(field){
     
     $http.get(url + '/contents/' + field.id).success(function(response){
       $scope.editPanelVisible = true;
       $scope.field = response;
+      console.log(response);
       $scope.field.options.forEach(function(option){
         $scope.options.push(option);
       })
       $scope.labelInput = response.label;
+      $scope.textInput = response.options[0];
 
-    }).error(function(repsonse){
+    }).error(function(response){
       console.log(response);
     })
   }
@@ -104,9 +105,20 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     $scope.options.push(newOptionEntry);
   }
 
+  //Add a text area in the array options
+  $scope.addDescription = function(newOptionEntry){
+    $scope.options = [];
+    $scope.addOptions(newOptionEntry);
+  }
+
   //Delete an option
   $scope.deleteOption = function(option){
     $scope.options.splice($scope.options.indexOf(option),1);
+  }
+
+  //Hide panel without saving
+  $scope.quitEditPanel = function(){
+    $scope.editPanelVisible = false;
   }
 
   //Update and hide options
@@ -117,13 +129,12 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       category: field.category,
       index: field.index
     };
-    
+    console.log($scope.updatedContent)
     $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
-      console.log(response);
       $scope.editPanelVisible = false;
       $scope.options = []
       $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
-        $scope.fields = []
+        $scope.fields = [];
         $scope.name = response.name;
         response.contents.forEach(function(content) {
           $scope.fields.push(content);
