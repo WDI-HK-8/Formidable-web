@@ -1,4 +1,4 @@
-app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootScope', function($scope, $http, $auth, $location, $rootScope){
+app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootScope','ModalService', function($scope, $http, $auth, $location, $rootScope, ModalService){
   
   $rootScope.title = 'Dashboard';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
@@ -40,6 +40,18 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
         console.log(response);
       });
     }
+  };
+
+  $scope.show = function() {
+    ModalService.showModal({
+        templateUrl: "<%= asset_path('yesno.html') %>",
+        controller: "YesNoController"
+    }).then(function(modal) {
+        modal.element.modal();
+        modal.close.then(function(result) {
+            $scope.message = "You said " + result;
+        });
+    });
   };
 
 }]);

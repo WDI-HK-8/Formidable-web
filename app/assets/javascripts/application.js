@@ -12,6 +12,7 @@
 //= require jquery
 //= require angular/angular
 //= require angular-route/angular-route
+//= require angular-modal-service/dst/angular-modal-service.min.js
 //= require bootstrap/dist/js/bootstrap
 //= require flat-ui/dist/js/flat-ui
 //= require ng-token-auth/dist/ng-token-auth
