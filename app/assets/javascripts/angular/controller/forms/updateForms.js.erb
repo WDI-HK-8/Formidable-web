@@ -89,6 +89,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       $scope.editPanelVisible = true;
       $scope.field = response;
       console.log(response);
+
       $scope.options = [];
       $scope.options = $scope.field.options;
 

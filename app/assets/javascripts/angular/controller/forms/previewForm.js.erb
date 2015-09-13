@@ -16,9 +16,6 @@ app.controller('PreviewFormCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     //Get all the options for every contents
     $scope.contents.forEach(function(content) {
       if (content.options !== null) {
-
-        console.log('content.options :',content.options);
-
         content.options.forEach(function(option) {
           var hash = {'name': option}
           options.push(hash);
