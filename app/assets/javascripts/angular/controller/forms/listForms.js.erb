@@ -3,7 +3,6 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
   $rootScope.title = 'Dashboard';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
-
   $scope.noForms = false;
   $scope.user = '';
   $auth.validateUser().then(function(response) {
@@ -19,6 +18,7 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
   });
 
   $scope.form = {};
+
   $scope.createForm = function() {
     $http.post(url + '/users/' + $scope.user.id + '/forms',$scope.form).success(function(response) {
       console.log(response)
@@ -42,16 +42,21 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
     }
   };
 
+  //Modal functionalities
+
   $scope.show = function() {
     ModalService.showModal({
-        templateUrl: "<%= asset_path('yesno.html') %>",
-        controller: "YesNoController"
+        templateUrl: "<%= asset_path('forms/modalCreateForm.html') %>",
+        controller: "ListFormsCtrl"
     }).then(function(modal) {
         modal.element.modal();
-        modal.close.then(function(result) {
-            $scope.message = "You said " + result;
+        modal.close.then(function(result) {x  
         });
     });
+  };
+
+  $scope.close = function(result) {
+    close(result, 500); 
   };
 
 }]);
