@@ -1,0 +1,20 @@
+app.controller('NavbarHomeCtrl', ['$scope', '$auth', '$location', '$window', '$rootScope', function($scope, $auth, $location, $window, $rootScope){
+  
+  $auth.validateUser().then(function(response) {
+    $scope.loggedIn = true;
+    $scope.home = "dashboard"
+  }).catch(function(response) {
+    $scope.loggedIn  = false;
+  });
+
+  $scope.logout = function() {
+    $auth.signOut().then(function(response) {
+      console.log(response);
+      $window.location.href = '/';
+    }).catch(function(response) {
+      console.log(response);
+    });
+  };
+
+  $scope.title = $rootScope.title;
+}]);
