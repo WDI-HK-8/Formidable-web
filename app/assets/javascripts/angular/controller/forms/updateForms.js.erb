@@ -78,14 +78,13 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   }
   
   $scope.options = []; //List of choices in a dropdown menu or checkboxes
-  $scope.input = {};
-  //Edit panel is hidden by default
+  $scope.input = {}; //encapsulate the inputs
 
+  //Edit panel is hidden by default
   $scope.editPanelVisible = false;
   
   //Show Edit panel
   $scope.displayEditPanel = function(field){
-    
     $http.get(url + '/contents/' + field.id).success(function(response){
       $scope.editPanelVisible = true;
       $scope.field = response;
@@ -135,7 +134,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     console.log($scope.updatedContent);
     $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
       $scope.editPanelVisible = false;
-      $scope.options = []
+      $scope.options = [];
       $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
         $scope.fields = [];
         $scope.name = response.name;
@@ -146,8 +145,11 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
 
     }).error(function(response){
       console.log(response);
-    });
+    });    
+  }
 
-    
+  //Go to the preview page
+  $scope.preview = function(){
+    $location.path('forms/' + $routeParams.id + '/preview');
   }
 }]);

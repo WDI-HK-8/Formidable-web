@@ -9,6 +9,7 @@
     </div>
 
     <div class="row">
+      <button ng-click="preview()" class="btn btn-primary btn-embossed">Preview Form</button>
       <div class="list-forms text-center">
         <div class="col-xs-2" id="sidebar">
           <ul id="selections">
@@ -40,7 +41,7 @@
             <button ng-click="quitEditPanel()">Exit</button>
           </div>
 
-          <div ng-if="field.category === 'dropdown' || field.category === 'checkboxes' || field.category === 'radio'">
+          <div ng-if="field.category === 'dropdown' || field.category === 'checkboxes' || field.category === 'radio'" class="multiChoice">
             <h6>options for {{ field.category }}</h6>
             <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput">
             <input placeholder="new option" ng-model="newOptionEntry">
