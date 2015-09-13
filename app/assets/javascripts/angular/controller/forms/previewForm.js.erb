@@ -1,0 +1,34 @@
+app.controller('PreviewFormCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope', function($scope, $http, $auth, $location, $routeParams, $rootScope){
+
+
+  $rootScope.title = 'Preview';
+  url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+
+  var options = [];
+
+  $http.get(url + "/forms/" + $routeParams.id).success(function(response){
+    console.log("Form infos",response);
+    $scope.form = response;
+    $scope.contents = response.contents;
+    $scope.contents.forEach(function(content) {
+      if (content.options !== null) {
+        console.log('content.options :',content.options)
+        $scope.options = content.options
+        // content.options.forEach(function(option) {
+        //   options.push(hash);
+        // });
+        // console.log("options", options)
+        // content.options = options;
+        // $scope.options = options
+        // options = [];
+        // console.log('refined options ',content.options);
+      }
+    });
+  }).error(function(response){
+    console.log(response)
+  });
+
+  
+  
+ 
+}]);
