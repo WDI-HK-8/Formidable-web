@@ -1,8 +1,7 @@
-app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootScope', function($scope, $http, $auth, $location, $rootScope){
+app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootScope','ModalService', function($scope, $http, $auth, $location, $rootScope, ModalService){
   
   $rootScope.title = 'Dashboard';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
-
 
   $scope.noForms = false;
   $scope.user = '';
@@ -19,6 +18,7 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
   });
 
   $scope.form = {};
+
   $scope.createForm = function() {
     $http.post(url + '/users/' + $scope.user.id + '/forms',$scope.form).success(function(response) {
       console.log(response)
@@ -40,6 +40,22 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
         console.log(response);
       });
     }
+  };
+
+  //Modal functionalities
+  $scope.show = function() {
+    ModalService.showModal({
+        templateUrl: "<%= asset_path('forms/modalCreateForm.html') %>",
+        controller: "ListFormsCtrl"
+    }).then(function(modal) {
+        modal.element.modal();
+        modal.close.then(function(result) {x  
+        });
+    });
+  };
+
+  $scope.close = function() {
+    close(500); 
   };
 
 }]);
