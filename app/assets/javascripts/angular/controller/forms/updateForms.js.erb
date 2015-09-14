@@ -16,7 +16,7 @@ app.filter('orderFieldBy', function(){
  }
 });
 
-app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope','dragulaService', function($scope, $http, $auth, $location, $routeParams, $rootScope, dragulaService){
+app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope','dragulaService', '$timeout', function($scope, $http, $auth, $location, $routeParams, $rootScope, dragulaService, $timeout){
 
   $rootScope.title = 'Design';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
@@ -68,6 +68,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       });
     }
   };
+
+
 
   //Delete a content
   $scope.delete = function(field){
@@ -150,8 +152,14 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     $location.path('forms/' + $routeParams.id + '/preview');
   }
 
-  $scope.$on('bag-one.drop',function(e, el) {
-    console.log(e)
-    console.log($scope.fields)
+  $scope.$on('bag-one.drop',function(e, el, source) {
+    $timeout(function() {
+      for(var i = 0; i < $scope.fields.length; i++){
+        $scope.fields[i].index = i
+        var content = $scope.fields[i];
+        $http.put(url + '/contents/' + content.id,content).success(function(response) {
+        });
+      }
+    },200)
   })
 }]);
