@@ -43,7 +43,6 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
   };
 
   //Modal functionalities
-
   $scope.show = function() {
     ModalService.showModal({
         templateUrl: "<%= asset_path('forms/modalCreateForm.html') %>",
@@ -55,8 +54,8 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
     });
   };
 
-  $scope.close = function(result) {
-    close(result, 500); 
+  $scope.close = function() {
+    close(500); 
   };
 
 }]);
