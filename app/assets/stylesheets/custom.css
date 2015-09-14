@@ -87,30 +87,6 @@ body {
   width: 80%;
 }
 
-#submission-sidebar {
-  padding: 0px;
-  height: 100vh;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.5);
-}
-
-#submission-sidebar .item {
-  width: 100%;
-  padding: 10px 20px;
-  padding-left: 30px;
-  border-bottom: 1px solid black;
-  color: rgb(52, 73, 94);
-}
-
-#submission-sidebar .item > h6{
-  margin-bottom: 0px;
-  font-size: 20px;
-}
-
-#submission-sidebar .item > p{
-  font-size: 15px;
-  opacity: 0.7;
-}
-
 
 #selections{
   padding: 0px;
@@ -160,5 +136,17 @@ body {
 
 .multiChoice li{
   color: black;
+}
+
+#table-row {
+  overflow: scroll;
+}
+
+#submission-table tr:first-child {
+  font-style: oblique;
+}
+
+#submission-table tr {
+  text-align: center;
 }
 

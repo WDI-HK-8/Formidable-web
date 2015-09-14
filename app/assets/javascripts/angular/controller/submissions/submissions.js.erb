@@ -3,14 +3,54 @@ app.controller('SubmissionsIndexCtrl', ['$scope', '$http','$auth','$location','$
   $rootScope.title = 'Analyze';
 
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+  $scope.noSubmissions = true;
 
-  $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
-    $scope.form = response
-    $http.get(url + '/forms/' + $scope.form.id + '/submissions').success(function(response) {
-      console.log(response)
-      $scope.submissions   =  response;
-      $scope.noSubmissions = !response.length;
+  $scope.exportation = [];
+  $scope.headers = [];
+
+  var compare = function(a,b) {
+    if (a.index < b.index)
+      return -1;
+    if (a.index > b.index)
+      return 1;
+    return 0;
+  }
+
+  $http.get(url + '/forms/' + $routeParams.id).success(function(form) {
+    console.log('form ',form)
+    $scope.form = form
+    $scope.contents = form.contents;
+    $scope.contents.sort(compare)
+    $http.get(url + '/forms/' + $scope.form.id + '/submissions').success(function(submissions) {
+      console.log('submissions ',submissions)
+      $scope.submissions = submissions;
+      $scope.noSubmissions = !submissions.length;
+      $scope.headers.push('Date');
+      $scope.contents.forEach(function(content) {
+        $scope.headers.push(content.label);
+      })
+      $scope.submissions.forEach(function(submission) {
+        var data = {Date: submission.created_at}
+        for(var i=0;i < $scope.contents.length;i++) {
+          var ind = -1;
+          submission.answers.forEach(function(answer,answerIndex) {
+            if(answer.content_id == $scope.contents[i].id) {
+              ind = answerIndex;
+            }
+          });
+          if(ind == -1) {
+            data[$scope.contents[i].label] = null;
+          } else {
+            data[$scope.contents[i].label] = submission.answers[i].values.join(', ');
+          }
+        }
+        console.log('headers',$scope.headers)
+        console.log('data ', data)
+        $scope.exportation.push(data)
+      }); 
     });
   });
+
+  
 
 }]);
