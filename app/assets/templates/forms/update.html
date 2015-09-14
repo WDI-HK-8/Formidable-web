@@ -29,34 +29,40 @@
         </div>
 
         <div class="col-xs-4" ng-show="editPanelVisible" id="editPanel">
-          <!--  A FAIRE: Refactor later -->
-          <div ng-if="field.category === 'text'">
+ 
+          <div ng-if="field.category === 'textarea' ||  field.category === 'text' ">
             <h6>options for {{ field.category }}</h6>
             <h5>{{ field.label }}</h5>
-            <form ng-submit="hideAndSaveEditPanel(field,labelInput)">
-              <input placeholder="label for {{field.category}}" autocomplete ng-model="labelInput">
+            <form ng-submit="hideAndSaveEditPanel(field,input.labelInput)">
+              <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput">
               <button type="submit">Save</button>
             </form>
+            <button ng-click="quitEditPanel()">Exit</button>
           </div>
-          <div ng-if="field.category === 'textarea'">
+
+          <div ng-if="field.category === 'dropdown' || field.category === 'checkboxes' || field.category === 'radio'">
             <h6>options for {{ field.category }}</h6>
-            <form ng-submit="hideAndSaveEditPanel(field,labelInput)">
-              <input placeholder="label for {{field.category}}" autocomplete ng-model="labelInput">
-              <button type="submit">Save</button>
-            </form>
-          </div>
-          <div ng-if="field.category === 'dropdown'">
-            <h6>options for {{ field.category }}</h6>
-            <input placeholder="label for {{field.category}}" autocomplete ng-model="labelInput">
+            <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput">
             <input placeholder="new option" ng-model="newOptionEntry">
             <button ng-click="addOptions(newOptionEntry)">Add</button>
-            <button ng-click="hideAndSaveEditPanel(field,labelInput)">Save</button>
-            <li ng-repeat="option in options">
+            <button ng-click="hideAndSaveEditPanel(field,input.labelInput)">Save</button>
+            <li ng-repeat="option in options track by $index">
               {{ option }}
               <button ng-click="deleteOption(option)">x</button>
             </li>
+            <button ng-click="quitEditPanel()">Exit</button>
           </div>
-          
+
+          <div ng-if="field.category === 'description'">
+            <h6>options for {{ field.category }}</h6>
+            <h5>{{ field.label }}</h5>
+            <form ng-submit="hideAndSaveEditPanel(field,input.labelInput)">
+              <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput">
+              <input placeholder="your text here" autocomplete ng-model="input.textInput">
+              <button type="submit" ng-click="addDescription(input.textInput)">Save</button>
+            </form>
+            <button ng-click="quitEditPanel()">Exit</button>
+          </div>
         </div>
       </div>
     </div>

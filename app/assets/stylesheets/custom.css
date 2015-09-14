@@ -129,8 +129,7 @@ body {
   width: 100%;
   color: white;
 }
-
-#editForm ul > li > a{
+.field > a{
   color: white;
   font-size: 20px;
 }
@@ -155,4 +154,9 @@ body {
 #editForm .editButton:hover{
   color: #33485F;
 }
+
+#dropdown li{
+  color: #33485F;
+}
+
 
