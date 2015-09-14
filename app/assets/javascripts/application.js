@@ -13,8 +13,10 @@
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-modal-service/dst/angular-modal-service.min.js
+//= require angular-sanitize
 //= require bootstrap/dist/js/bootstrap
 //= require flat-ui/dist/js/flat-ui
+//= require ng-csv/build/ng-csv
 //= require ng-token-auth/dist/ng-token-auth
 //= require angular-cookie/angular-cookie
 //= require_tree .
