@@ -7,7 +7,7 @@ json.array! @forms do |form|
   json.contents form.contents
   json.array! form.submissions do |submission|
     json.id submission.id
-    json.signature @submission.signature
+    json.signature submission.signature
     json.form_id submission.form_id
     json.answers submission.answers
     json.created_at submission.created_at
