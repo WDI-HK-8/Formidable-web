@@ -19,4 +19,5 @@
 //= require ng-csv/build/ng-csv
 //= require ng-token-auth/dist/ng-token-auth
 //= require angular-cookie/angular-cookie
+//= require angular-dragula/dist/angular-dragula
 //= require_tree .

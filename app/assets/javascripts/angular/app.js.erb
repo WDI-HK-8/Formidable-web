@@ -1,5 +1,4 @@
-var app = angular.module('formidable', ['ngRoute','ng-token-auth','ui.bootstrap']);
-
+var app = angular.module('formidable', ['ngRoute','ng-token-auth','ngCsv','angularModalService',angularDragula(angular),'ui.bootstrap']);
 app.config(['$routeProvider','$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
   $routeProvider.

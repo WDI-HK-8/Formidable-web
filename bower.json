@@ -6,6 +6,7 @@
   "dependencies": {
     "angular": "~1.4.5",
     "angular-cookie": "~4.0.9",
+    "angular-dragula": "~1.0.12",
     "angular-route": "~1.4.5",
     "angular-sanitize": "~1.4.5",
     "bootstrap": "~3.3.5",
