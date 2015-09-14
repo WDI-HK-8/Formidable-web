@@ -12,8 +12,8 @@
     "flat-ui": "~2.2.2",
     "jquery": "~2.1.4",
     "ng-token-auth": "~0.0.28",
-    "angular-modal-service": "~0.6.7",
     "ng-csv": "~0.3.4",
-    "ng-token-auth": "~0.0.28"
+    "ng-token-auth": "~0.0.28",
+    "angular-bootstrap": "~0.13.4"
   }
 }

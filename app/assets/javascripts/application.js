@@ -15,6 +15,7 @@
 //= require angular-modal-service/dst/angular-modal-service.min.js
 //= require angular-sanitize
 //= require bootstrap/dist/js/bootstrap
+//= require angular-bootstrap/ui-bootstrap.min.js
 //= require flat-ui/dist/js/flat-ui
 //= require ng-csv/build/ng-csv
 //= require ng-token-auth/dist/ng-token-auth
