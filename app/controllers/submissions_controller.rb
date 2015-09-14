@@ -4,7 +4,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = Form.find(params[:form_id]).submissions.create()
+    @submission = Form.find(params[:form_id]).submissions.create(submission_params)
   end
 
   def show
@@ -26,5 +26,10 @@ class SubmissionsController < ApplicationController
 
   def list
     @forms = User.find(params[:user_id]).forms.joins(:submissions)
+  end
+
+  private
+  def submission_params
+    params.require(:submission).permits(:signature)
   end
 end
