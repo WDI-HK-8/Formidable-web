@@ -18,7 +18,7 @@
         </div>
 
         <div class="col-xs-6" id="listOfContents">
-          <ul class="contentField">
+          <ul class="contentField" dragula='"bag-one"'>
             <li ng-repeat="field in fields | orderFieldBy:'index'" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="field btn btn-embossed btn-primary">
               <i ng-click="delete(field)" class="fa fa-times fa-2x deleteButton" ng-show="!editPanelVisible && showButtons"></i>
               <a href="">

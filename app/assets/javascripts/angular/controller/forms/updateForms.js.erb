@@ -16,7 +16,7 @@ app.filter('orderFieldBy', function(){
  }
 });
 
-app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope', function($scope, $http, $auth, $location, $routeParams, $rootScope){
+app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope','dragulaService', function($scope, $http, $auth, $location, $routeParams, $rootScope, dragulaService){
 
   $rootScope.title = 'Design';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
@@ -149,4 +149,9 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   $scope.preview = function(){
     $location.path('forms/' + $routeParams.id + '/preview');
   }
+
+  $scope.$on('bag-one.drop',function(e, el) {
+    console.log(e)
+    console.log($scope.fields)
+  })
 }]);
