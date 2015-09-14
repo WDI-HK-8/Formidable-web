@@ -29,7 +29,7 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
   //Modal 
   $scope.open = function() {
     var modalInstance = $modal.open({
-      animation: true;
+      animation: true,
       templateUrl: "<%= asset_path('forms/modalCreateForms.html') %>",
       controller: 'ModalInstanceCtrl'
     });
