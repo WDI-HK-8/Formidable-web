@@ -26,6 +26,10 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
     when('/forms/:id/submissions', {
       templateUrl: "<%= asset_path('submissions/index.html') %>",
       controller: 'SubmissionsIndexCtrl'
+    }).
+    when('/forms/:id/preview', {
+      templateUrl: "<%= asset_path('forms/preview.html') %>",
+      controller: "PreviewFormCtrl"
     });
 
   $authProvider.configure({

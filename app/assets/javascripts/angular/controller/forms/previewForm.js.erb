@@ -7,20 +7,35 @@ app.controller('PreviewFormCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   var options = [];
 
   $http.get(url + "/forms/" + $routeParams.id).success(function(response){
+    
     console.log("Form infos",response);
+    
     $scope.form = response;
     $scope.contents = response.contents;
+
+    //Get all the options for every contents
     $scope.contents.forEach(function(content) {
       if (content.options !== null) {
-        console.log('content.options :',content.options)
-        $scope.options = content.options
+
+        console.log('content.options :',content.options);
+
+        content.options.forEach(function(option) {
+          var hash = {'name': option}
+          options.push(hash);
+        });
+        content.options = options;
+        options = [];
+        
+        console.log('refined options ',content.options);
+
       }
     });
   }).error(function(response){
     console.log(response)
   });
 
-  
-  
- 
+  $scope.exitPreview = function(){
+    $location.path('forms/' + $routeParams.id + '/edit');
+  }
 }]);
+

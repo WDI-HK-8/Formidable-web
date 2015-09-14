@@ -78,22 +78,19 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   }
   
   $scope.options = []; //List of choices in a dropdown menu or checkboxes
-  $scope.input = {};
-  //Edit panel is hidden by default
+  $scope.input = {}; //encapsulate the inputs
 
+  //Edit panel is hidden by default
   $scope.editPanelVisible = false;
   
   //Show Edit panel
   $scope.displayEditPanel = function(field){
-    
     $http.get(url + '/contents/' + field.id).success(function(response){
       $scope.editPanelVisible = true;
       $scope.field = response;
       console.log(response);
-      $scope.options = []
-      $scope.field.options.forEach(function(option){
-        $scope.options.push(option);
-      })
+      $scope.options = [];
+      $scope.options = $scope.field.options;
 
       $scope.input.labelInput = response.label;
       $scope.input.textInput = response.options[0];
@@ -135,19 +132,20 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     console.log($scope.updatedContent);
     $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
       $scope.editPanelVisible = false;
-      $scope.options = []
+      $scope.options = [];
       $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
         $scope.fields = [];
         $scope.name = response.name;
-        response.contents.forEach(function(content) {
-          $scope.fields.push(content);
-        });
+        $scope.fields = response.contents;
       })
 
     }).error(function(response){
       console.log(response);
-    });
+    });    
+  }
 
-    
+  //Go to the preview page
+  $scope.preview = function(){
+    $location.path('forms/' + $routeParams.id + '/preview');
   }
 }]);
