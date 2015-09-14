@@ -46,6 +46,10 @@ body {
   color: #16a085;
 }
 
+.navbar-lg .navbar-nav > li > a {
+  font-size: 18px;
+}
+
 .navbar-inverse {
   background-color: rgba(50,68,87,0.5);
 }
@@ -141,7 +145,7 @@ body {
   color: #324457;
 }
 
-.form-title-box h3:hover {
+.form-title-box h4:hover {
   vertical-align: middle;
   font-size: 18px;
   font-weight: 400;

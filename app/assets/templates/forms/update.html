@@ -2,22 +2,23 @@
 <div class="wrap-dashboard" id="editForm">
   <div class="container-fluid wrap">
     
-    <div class="container" id="formTitle">
-      <div class="row">
-        <h4>{{ name }}</h4>
-      </div>
+    <div class="dash-message text-center" id="formTitle">
+        <h3>{{ name }}</h3>
+        <p>Updated on: {{ updated | date:"dd/MM/yyyy 'at' h:mma" }}</p>
     </div>
 
     <div class="row">
       <button ng-click="preview()" class="btn btn-primary btn-embossed">Preview Form</button>
-      <div class="list-forms text-center">
-        <div class="col-xs-2" id="sidebar">
+      <div class="list-forms">
+        <div class="col-xs-3" id="sidebar">
+          <h5>Field types</h5>
           <ul id="selections">
             <li ng-repeat="category in categories" ng-click="add(category)" class="btn btn-embossed btn-primary">{{ category }}<i class="addContent fa fa-plus-square"></i></li>
           </ul>
         </div>
 
         <div class="col-xs-6" id="listOfContents">
+          <h5>Form fields</h5>
           <ul class="contentField" dragula='"bag-one"' dragula-model="fields">
             <li ng-repeat="field in fields | orderFieldBy:'index'" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="field btn btn-embossed btn-primary">
               <i ng-click="delete(field)" class="fa fa-times fa-2x deleteButton" ng-show="!editPanelVisible && showButtons"></i>
@@ -29,8 +30,7 @@
           </ul>
         </div>
 
-        <div class="col-xs-4" ng-show="editPanelVisible" id="editPanel">
- 
+        <div class="col-xs-3" ng-show="editPanelVisible" id="editPanel">
           <div ng-if="field.category === 'textarea' ||  field.category === 'text' ">
             <h6>options for {{ field.category }}</h6>
             <h5>{{ field.label }}</h5>

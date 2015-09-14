@@ -28,6 +28,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   //List the contents
   $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
     $scope.name = response.name;
+    $scope.created = response.created_at;
+    $scope.updated = response.updated_at;
     response.contents.forEach(function(content) {
       $scope.fields.push(content);
     })
