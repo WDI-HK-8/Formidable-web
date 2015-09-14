@@ -27,20 +27,12 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
   };
 
   //Modal 
-  $scope.animationsEnabled = true;
-
   $scope.open = function() {
-
     var modalInstance = $modal.open({
-      animation: $scope.animationsEnabled,
+      animation: true;
       templateUrl: "<%= asset_path('forms/modalCreateForms.html') %>",
       controller: 'ModalInstanceCtrl'
     });
-
-  };
-
-  $scope.toggleAnimation = function () {
-    $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
 }]);
