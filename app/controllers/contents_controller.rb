@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   def index
-    @contents = Form.find(params[:form_id]).contents.includes(:submissions)
+    @contents = Form.find(params[:form_id]).contents
   end
 
   def create

@@ -3,25 +3,21 @@ app.controller('SubmissionsIndexCtrl', ['$scope', '$http','$auth','$location','$
   $rootScope.title = 'Analyze';
 
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+  $scope.noSubmissions = true;
 
-  $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
-    $scope.form = response
-    $http.get(url + '/forms/' + $scope.form.id + '/submissions').success(function(response) {
-      console.log(response)
-      $scope.submissions = response;
-      $scope.answers = $scope.submissions[0].answers;
-      // call indent function on $scope.submissions[0]
-      $scope.noSubmissions = !response.length;
+
+  $http.get(url + '/forms/' + $routeParams.id).success(function(form) {
+    console.log('form ',form)
+    $scope.form = form
+    $scope.contents = form.contents;
+    $http.get(url + '/forms/' + $scope.form.id + '/submissions').success(function(submissions) {
+      console.log('submissions ',submissions)
+      $scope.submissions = submissions;
+      $scope.noSubmissions = !submissions.length;
+      console.log($scope.noSubmissions)
     });
+    
   });
-
-  $scope.getSubmission = function(submission) {
-    $scope.answers = submission.answers
-  }
-
-  var indent = function(index) {
-    //should indent the cell permanently, called once a cell is clicked
-  }
 
 
 }]);
