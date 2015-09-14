@@ -12,7 +12,6 @@
 //= require jquery
 //= require angular/angular
 //= require angular-route/angular-route
-//= require angular-modal-service/dst/angular-modal-service.min.js
 //= require angular-sanitize
 //= require bootstrap/dist/js/bootstrap
 //= require angular-bootstrap/ui-bootstrap.min.js
