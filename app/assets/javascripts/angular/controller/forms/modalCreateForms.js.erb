@@ -1,0 +1,25 @@
+angular.module('formidable').controller('ModalInstanceCtrl', function ($scope, $modalInstance, $http, $location) {
+
+  $scope.form = {};
+  $scope.createForm = function() {
+    $http.post(url + '/users/' + $scope.user.id + '/forms',$scope.form).success(function(response) {
+      console.log(response)
+      if(response.created_at) {
+        $location.path('forms/' + response.id + '/edit');
+      } else {
+        $scope.form.name = ' ';
+        alert("write a better name you douche");
+      }
+    }).error(function(response){
+      alert("write something you douche");
+    });
+  }
+
+  $scope.ok = function () {
+    $scope.createForm();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
