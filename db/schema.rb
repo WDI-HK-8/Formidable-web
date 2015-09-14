@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150909021516) do
 
   create_table "submissions", force: :cascade do |t|
     t.integer  "form_id"
-    t.text     "submission"
+    t.text     "signature"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

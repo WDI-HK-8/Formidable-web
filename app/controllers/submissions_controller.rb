@@ -30,6 +30,6 @@ class SubmissionsController < ApplicationController
 
   private
   def submission_params
-    params.require(:submission).permits(:signature)
+    params.require(:submission).permit(:signature)
   end
 end
