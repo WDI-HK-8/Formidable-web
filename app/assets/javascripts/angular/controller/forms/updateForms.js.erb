@@ -89,10 +89,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       $scope.editPanelVisible = true;
       $scope.field = response;
       console.log(response);
-      $scope.options = []
-      $scope.field.options.forEach(function(option){
-        $scope.options.push(option);
-      })
+      $scope.options = [];
+      $scope.options = $scope.field.options;
 
       $scope.input.labelInput = response.label;
       $scope.input.textInput = response.options[0];
@@ -138,9 +136,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
         $scope.fields = [];
         $scope.name = response.name;
-        response.contents.forEach(function(content) {
-          $scope.fields.push(content);
-        });
+        $scope.fields = response.contents;
       })
 
     }).error(function(response){

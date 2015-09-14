@@ -18,7 +18,6 @@ app.controller('PreviewFormCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       if (content.options !== null) {
 
         console.log('content.options :',content.options);
-        $scope.options = content.options;
 
         content.options.forEach(function(option) {
           var hash = {'name': option}
