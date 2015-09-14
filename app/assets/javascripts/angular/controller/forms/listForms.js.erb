@@ -1,4 +1,4 @@
-app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootScope','ModalService', function($scope, $http, $auth, $location, $rootScope, ModalService){
+app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootScope','$modal', function($scope, $http, $auth, $location, $rootScope, $modal){
   
   $rootScope.title = 'Dashboard';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
@@ -17,22 +17,6 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
     console.log(response);
   });
 
-  $scope.form = {};
-
-  $scope.createForm = function() {
-    $http.post(url + '/users/' + $scope.user.id + '/forms',$scope.form).success(function(response) {
-      console.log(response)
-      if(response.created_at) {
-        $location.path('forms/' + response.id + '/edit');
-      } else {
-        $scope.form.name = ' ';
-        alert("write a better name you douche");
-      }
-    }).error(function(response){
-      alert("write something you douche");
-    });
-  }
-
   $scope.delete = function(form) {
     if(confirm('This will delete all data associated with this form, and is irreversible')) {
       $scope.forms.splice($scope.forms.indexOf(form),1);
@@ -42,20 +26,15 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
     }
   };
 
-  //Modal functionalities
-  $scope.show = function() {
-    ModalService.showModal({
-        templateUrl: "<%= asset_path('forms/modalCreateForm.html') %>",
-        controller: "ListFormsCtrl"
-    }).then(function(modal) {
-        modal.element.modal();
-        modal.close.then(function(result) {x  
-        });
+  //Modal 
+  $scope.open = function() {
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: "<%= asset_path('forms/modalCreateForms.html') %>",
+      controller: 'ModalInstanceCtrl'
     });
   };
 
-  $scope.close = function() {
-    close(500); 
-  };
-
 }]);
+
+
