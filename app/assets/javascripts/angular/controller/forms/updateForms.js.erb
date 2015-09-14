@@ -21,7 +21,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   $rootScope.title = 'Design';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
-  $scope.categories = ['text','textarea','dropdown','checkboxes','radio','description'] //All the categories of content available to add to your form
+  $scope.categories = ['text','textarea','dropdown','checkbox','radio','description'] //All the categories of content available to add to your form
 
   $scope.fields = [] //All the contents in the form
 
@@ -32,8 +32,14 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     $scope.updated = response.updated_at;
     response.contents.forEach(function(content) {
       $scope.fields.push(content);
-    })
+    });
   })
+
+  // Select a field
+  $scope.selectedRow = null;
+   $scope.setClickedRow = function(index){  //function that sets the value of selectedRow to current index
+      $scope.selectedRow = index;
+   }
 
   //Add a new content
   $scope.add = function(elem) {

@@ -94,6 +94,10 @@ body {
   margin-bottom: 20px;
 }
 
+.list-forms h5 {
+  font-size: 18px;
+}
+
 .form-link {
   position: relative;
   background-color: white;
@@ -207,14 +211,24 @@ body {
   opacity: 0.7;
 }
 
->>>>>>> (ux): Improve design for dashboard
-
-#selections{
-  padding: 0px;
+#selections {
+  padding: 10px;
+  background-color: #324457;
+  border-radius: 4px;
 }
 
-#selections i{
+#selections li {
+  color: white;
+  font-size: 18px;
+}
+
+#selections li:hover {
+  background-color: #1abc9c;
+}
+
+#selections i {
   float: right;
+  margin-top: 5px;
 } 
 
 #editForm .contentField{
@@ -225,13 +239,78 @@ body {
   list-style-type: none;
   width: 100%;
 }
-.field > a{
-  color: white;
-  font-size: 20px;
+
+#listOfContents ul{
+  border: 1px solid #E2E2E2;
+  padding: 20px;
+  border-radius: 4px;
 }
 
-#editForm ul{
-  text-align: center;
+#listOfContents .btn-field {
+  position: relative;
+  background-color: white;
+  border: 1px solid #E2E2E2;
+  box-shadow: 0px 1px 3px #D3D3D3;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #33485F;
+  font-size: 18px;
+}
+
+#listOfContents .btn-field.selected {
+  background-color: #1abc9c;
+  color: white;
+}
+
+
+#listOfContents li:hover {
+  border: 1px solid #1abc9c;
+  color: #1abc9c;
+}
+
+#listOfContents .btn-field p {
+  color: #E9EEF1;
+  margin-bottom: 0;
+}
+
+#listOfContents .btn-field i {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+}
+
+#editPanel .panel-categories {
+  padding: 10px;
+  background-color: #1abc9c;
+  border-radius: 4px;
+}
+
+#editPanel .panel-categories h5 {
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#editPanel .btn-properties {
+  margin-top: 15px;
+}
+
+#editPanel .field-option {
+  color: white;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+#editPanel .btn.input-group-addon {
+  background-color: #324457;
+  border: none;
+}
+
+#editPanel .field-option-delete {
+  float: right;
+  padding-top: 5px;
 }
 
 #editForm .deleteButton{
