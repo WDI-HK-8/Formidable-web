@@ -132,7 +132,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       category: field.category,
       index: field.index
     };
-    console.log($scope.updatedContent)
+    console.log($scope.updatedContent);
     $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
       $scope.editPanelVisible = false;
       $scope.options = []
