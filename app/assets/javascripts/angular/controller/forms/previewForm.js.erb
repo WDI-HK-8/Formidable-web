@@ -14,14 +14,6 @@ app.controller('PreviewFormCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       if (content.options !== null) {
         console.log('content.options :',content.options)
         $scope.options = content.options
-        // content.options.forEach(function(option) {
-        //   options.push(hash);
-        // });
-        // console.log("options", options)
-        // content.options = options;
-        // $scope.options = options
-        // options = [];
-        // console.log('refined options ',content.options);
       }
     });
   }).error(function(response){
