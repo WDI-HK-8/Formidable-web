@@ -77,9 +77,10 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     })
   }
   
-  $scope.options = []; //list of choices in a dropdown menu or checkboxes
+  $scope.options = []; //List of choices in a dropdown menu or checkboxes
+  $scope.input = {};
+  //Edit panel is hidden by default
 
-  //edit panel is hidden by default
   $scope.editPanelVisible = false;
   
   //Show Edit panel
@@ -89,11 +90,13 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       $scope.editPanelVisible = true;
       $scope.field = response;
       console.log(response);
+      $scope.options = []
       $scope.field.options.forEach(function(option){
         $scope.options.push(option);
       })
-      $scope.labelInput = response.label;
-      $scope.textInput = response.options[0];
+
+      $scope.input.labelInput = response.label;
+      $scope.input.textInput = response.options[0];
 
     }).error(function(response){
       console.log(response);
