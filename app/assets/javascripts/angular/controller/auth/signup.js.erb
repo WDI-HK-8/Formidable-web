@@ -1,4 +1,6 @@
-app.controller('SignUpCtrl', ['$scope','$auth','$location','$window', function($scope,$auth,$location,$window){
+app.controller('SignUpCtrl', ['$scope','$auth','$location','$window','$http', function($scope,$auth,$location,$window,$http){
+
+  url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
   var user;
   $auth.validateUser().then(function(resp) {
@@ -8,15 +10,22 @@ app.controller('SignUpCtrl', ['$scope','$auth','$location','$window', function($
   })
   
   $scope.registrationForm = {};
+  $scope.company = {};
   
   $scope.signup = function(){
-    $auth.submitRegistration($scope.registrationForm).
-      then(function(response){
-        console.log(response)
-        $window.location.href = '/#/dashboard';
-      }).
-      catch(function(response){
-        console.log(response)
-      });
+    $http.post(url + '/companies',$scope.company).success(function(resp) {
+      console.log(resp)
+      $scope.registrationForm.company_id = resp.id
+      console.log($scope.registrationForm)
+      $auth.submitRegistration($scope.registrationForm).
+        then(function(response){
+          console.log(response)
+          $window.location.href = '/#/dashboard';
+        }).
+        catch(function(response){
+          console.log(response)
+        });
+      
+    })
   }
 }])
