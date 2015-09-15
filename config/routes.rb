@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: '/auth'
   root 'static_pages#index'
 
+  get '/companies/:code', to: 'companies#match'
   resources :companies, only: [:create, :destroy, :show, :update]
 
   post '/users/:user_id/forms', to: 'forms#create'

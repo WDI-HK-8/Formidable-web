@@ -41,6 +41,11 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def match
+    @company = Company.where(code: params[:code])[0]
+    render 'show'
+  end
+
   private
 
   def String.random_alphanumeric(size=16)
