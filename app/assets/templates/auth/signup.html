@@ -1,7 +1,8 @@
 <div class="container authPage">
-  <div class="row">
-    <h1>Sign Up</h1>
-    <form ng-submit="signup()" role="form" ng-init="registrationForm = {}">
+  <div class="row text-center">
+    <a href="/#/"><i class="fa fa-times fa-2x"></i></a>
+    <h2>Sign Up</h2>
+    <form ng-submit="signup()" role="form" ng-init="registrationForm = {}" class="auth-form text-center">
       <div class="form-group">
         <label>Email</label>
         <input type="email" name="email" ng-model="registrationForm.email" required="required" class="form-control" placeholder="Enter Email"/>
@@ -22,7 +23,6 @@
       </div>
 
       <button type="submit" class="btn btn-primary btn-lg">Register</button>
-      <a href="/#/"><button class="btn btn-danger btn-lg">Back</button></a>
     </form>
   </div>
 </div>

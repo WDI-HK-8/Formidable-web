@@ -7,6 +7,41 @@ body {
   background-color: white;
 }
 
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+  color: white;
+  font-size: 18px;
+}
+
+.container.authPage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #34495e;
+  color: white;
+  font-size: 18px;
+  padding: 20px;
+}
+
+.container.authPage label{
+  font-size: 18px;
+}
+
+.container.authPage i {
+  position: absolute;
+  right: 5%;
+}
+
+.container.authPage a {
+  color: white;
+}
+
+.container.authPage button {
+  width: 100%;
+  margin-top: 20px;
+}
+
 .navbar-brand {
   font-size: 30px;
 }
