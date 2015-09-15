@@ -179,7 +179,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
         $http.put(url + '/contents/' + content.id,content).success(function(response) {
         });
       }
-    },500)
+    },1000)
   })
 
   //Catch the updated form name from the modalChangeNameCtrl
