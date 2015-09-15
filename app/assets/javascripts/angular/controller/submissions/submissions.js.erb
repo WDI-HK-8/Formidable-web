@@ -3,10 +3,11 @@ app.controller('SubmissionsIndexCtrl', ['$scope', '$http','$auth','$location','$
   $rootScope.title = 'Submissions';
 
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
+  
   $scope.noSubmissions = true;
-
   $scope.exportation = [];
-  $scope.headers = [];
+  $scope.headers = ['Date'];
+  $scope.values = {};
 
   var compare = function(a,b) {
     if (a.index < b.index)
@@ -16,36 +17,41 @@ app.controller('SubmissionsIndexCtrl', ['$scope', '$http','$auth','$location','$
     return 0;
   }
 
+  var siftAnswers = function(answers,index,callback) {
+    console.log(answers,index)
+    answers.forEach(function(answer,answerIndex) {
+      if(answer.content_id == index) {
+        console.log(answerIndex)
+        callback(answerIndex);
+      }
+    });
+    callback(-1);
+  };
+
   $http.get(url + '/forms/' + $routeParams.id).success(function(form) {
     console.log('form ',form)
     $scope.form = form
     $scope.contents = form.contents;
     $scope.contents.sort(compare)
+    $scope.contents.forEach(function(content) {
+      $scope.headers.push(content.label);
+    });
     $http.get(url + '/forms/' + $scope.form.id + '/submissions').success(function(submissions) {
       console.log('submissions ',submissions)
       $scope.submissions = submissions;
       $scope.noSubmissions = !submissions.length;
-      $scope.headers.push('Date');
-      $scope.contents.forEach(function(content) {
-        $scope.headers.push(content.label);
-      })
       $scope.submissions.forEach(function(submission) {
-        var data = {Date: submission.created_at}
-        for(var i=0;i < $scope.contents.length;i++) {
-          var ind = -1;
-          submission.answers.forEach(function(answer,answerIndex) {
-            if(answer.content_id == $scope.contents[i].id) {
-              ind = answerIndex;
-            }
-          });
-          if(ind == -1) {
-            data[$scope.contents[i].label] = null;
-          } else {
-            data[$scope.contents[i].label] = submission.answers[i].values.join(', ');
+        var data = {Date: submission.created_at,Signature: submission.signature}
+        var newValues = [];
+        var index = 0;
+        $scope.contents.forEach(function(content,contentIndex) {
+          if(content.category != 'description') {
+            newValues.push(submission.answers[index].values.join(', '));
+            data[$scope.contents[contentIndex].label] = submission.answers[index].values.join(', ');
+            index++;
           }
-        }
-        console.log('headers',$scope.headers)
-        console.log('data ', data)
+        });
+        $scope.values[submission.id] = newValues;
         $scope.exportation.push(data)
       }); 
     });
