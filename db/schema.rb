@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150909021516) do
 
   create_table "forms", force: :cascade do |t|
     t.string   "name"
+    t.boolean  "signature"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
