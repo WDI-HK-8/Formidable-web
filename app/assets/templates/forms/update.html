@@ -65,7 +65,7 @@
                 <h5>Label:</h5>
                 <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput" class="form-control flat">
                 <h5>Text:</h5>
-                <input placeholder="your text here" autocomplete ng-model="input.textInput" class="form-control flat">
+                <textarea rows="10" cols="50" placeholder="your text here" autocomplete ng-model="input.textInput" class="form-control flat textInput"></textarea>
                 <button type="submit" ng-click="addDescription(input.textInput)" class="btn btn-inverse btn-properties">Save</button>
                 <button ng-click="quitEditPanel()" class="btn btn-inverse btn-properties">Cancel</button>
               </form>
