@@ -135,11 +135,13 @@ footer {
   color: #19BC9C;
 }
 .wrap {
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
-  height: 100%;
 }
 
+#dashboard-wrapper{
+  margin-bottom: 200px;
+}
 .home-title {
   color: white;
   margin-top: 80px;
@@ -153,7 +155,7 @@ footer {
   background-color: #33485F;
   background-image: url("http://i61.tinypic.com/106k9yv.jpg");
   width: 100%;
-  height: 100%;
+  min-height: 800px;
 }
 
 .wrap-dashboard {
