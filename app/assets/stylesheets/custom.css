@@ -1,3 +1,4 @@
+
 body {
   background-color: white;
 }
@@ -300,6 +301,11 @@ footer {
   float: right;
   margin-top: 5px;
 } 
+
+#pencil{
+  font-size: 20px;
+  margin-left: 20px;
+}
 
 #editForm .contentField{
   position: relative;
