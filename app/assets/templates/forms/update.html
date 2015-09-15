@@ -20,14 +20,6 @@
         <div class="col-xs-6" id="listOfContents">
           <h5>Form fields</h5>
           <ul class="contentField" dragula='"bag-one"' dragula-model="fields">
-            <li ng-repeat="field in fields | orderFieldBy:'index'" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="field btn btn-embossed btn-primary">
-              <i ng-click="delete(field)" class="fa fa-times fa-2x deleteButton" ng-show="!editPanelVisible && showButtons"></i>
-              <a href="">
-                {{ field.category }} : {{ field.label }} : {{ field.index }}
-              </a>
-              <i ng-click="displayEditPanel(field)" class="btn editButton fa fa-cog fa-spin fa-2x" ng-show="!editPanelVisible && showButtons"></i>
-            </li>  
-          <ul class="contentField">
             <li ng-repeat="field in fields | orderFieldBy:'index'" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="btn btn-field" ng-click="setClickedRow($index); displayEditPanel(field)" ng-class="{selected : $index == selectedRow}">
               {{ field.label }}
               <p>({{ field.category }})</p>
