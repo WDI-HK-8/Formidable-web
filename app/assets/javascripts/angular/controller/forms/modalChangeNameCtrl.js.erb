@@ -1,0 +1,26 @@
+angular.module('formidable').controller('ModalChangeNameCtrl', function ($scope, $modalInstance, $http, $location, $routeParams, $rootScope) {
+
+  url = "<%= ENV['URL'] %>" || 'http://localhost:3000';
+  
+
+  $scope.changeFormName = function(newName) {
+    $scope.form = {
+      name: newName
+    };
+    $http.put(url + '/forms/' + $routeParams.id ,$scope.form).success(function(response) {
+       
+    }).error(function(response){
+      alert("write something you douche");
+    });
+  }
+
+  $scope.ok = function(newName) {
+    $rootScope.$emit('formName',[newName]);
+    $scope.changeFormName(newName);
+    $modalInstance.dismiss();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss();
+  };
+});
