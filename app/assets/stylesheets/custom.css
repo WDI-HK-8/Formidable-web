@@ -436,13 +436,26 @@ footer {
 
 #table-row {
   overflow: scroll;
+  margin-top: 20px;
 }
 
-#submission-table tr:first-child {
-  font-style: oblique;
+#table-row table {
+  border-collapse: collapse;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+#submission-table th {
+  text-align: center;
+  padding: 5px;
+  vertical-align: middle;
+  background-color: #E9EEF1;
 }
 
 #submission-table tr {
   text-align: center;
+  padding: 5px;
+  vertical-align: middle;
 }
 
