@@ -35,8 +35,9 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
 
   // Select a field
   $scope.selectedRow = null;
-   $scope.setClickedRow = function(index){  //function that sets the value of selectedRow to current index
-      $scope.selectedRow = index;
+  //function that sets the value of selectedRow to current index
+  $scope.setClickedRow = function(index){
+    $scope.selectedRow = index;
   }
 
   //Change the name of the form
@@ -138,6 +139,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   //Hide panel without saving
   $scope.quitEditPanel = function(){
     $scope.editPanelVisible = false;
+    $scope.selectedRow = null;
   }
 
   //Update and hide options
@@ -157,6 +159,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
         $scope.form = response;
         $scope.fields = response.contents;
       })
+      $scope.selectedRow = null;
 
     }).error(function(response){
       console.log(response);
