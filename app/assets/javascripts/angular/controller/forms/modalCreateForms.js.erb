@@ -1,4 +1,4 @@
-angular.module('formidable').controller('ModalInstanceCtrl', function($scope, $modalInstance, $http, $location) {
+angular.module('formidable').controller('ModalInstanceCtrl',['$scope','$modalInstance','$http','$location', function($scope, $modalInstance, $http, $location) {
 
   $scope.form = {};
   $scope.createForm = function() {
@@ -22,4 +22,4 @@ angular.module('formidable').controller('ModalInstanceCtrl', function($scope, $m
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
-});
+}]);

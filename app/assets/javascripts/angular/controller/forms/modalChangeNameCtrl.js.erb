@@ -1,4 +1,4 @@
-angular.module('formidable').controller('ModalChangeNameCtrl', function ($scope, $modalInstance, $http, $location, $routeParams, $rootScope) {
+angular.module('formidable').controller('ModalChangeNameCtrl', ['$scope','$modalInstance','$http','$location','$routeParams','$rootScope',function($scope, $modalInstance, $http, $location, $routeParams, $rootScope) {
 
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000';
   
@@ -23,4 +23,4 @@ angular.module('formidable').controller('ModalChangeNameCtrl', function ($scope,
   $scope.cancel = function () {
     $modalInstance.dismiss();
   };
-});
+}]);
