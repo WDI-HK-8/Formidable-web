@@ -19,13 +19,13 @@
           </div>
         </a>
         <div class="form-options">
-          <a href="/#/forms/{{ form.id }}/submissions" class="view-submissions">
+          <a href="/#/forms/{{ form.id }}/submissions" class="view-submissions" popover="View submissions" popover-trigger="mouseenter" popover-append-to-body="true">
             <i class="fa fa-list-ul"></i>
           </a>
-          <a href="/#/forms/{{ form.id }}/edit" class="edit-form">
+          <a href="/#/forms/{{ form.id }}/edit" class="edit-form" popover="Edit" popover-trigger="mouseenter" popover-append-to-body="true">
             <i class="fa fa-pencil-square-o"></i>
           </a>
-          <a href="" class="delete-form" ng-click="delete(form)">
+          <a href="" class="delete-form" ng-click="delete(form)" popover="Delete" popover-trigger="mouseenter" popover-append-to-body="true">
             <i class="fa fa-trash-o"></i>
           </a>
         </div>
