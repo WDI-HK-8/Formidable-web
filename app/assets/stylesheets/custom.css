@@ -111,15 +111,33 @@ body {
 }
 
 footer {
+  margin-top: 0px;
   width: 100%;
-  background-image: url("http://i59.tinypic.com/nvqhk2.png");
   background-color: #33485F;
-  background-size: 210px;
-  background-repeat: no-repeat;
   background-position: 0% 50%;
+  height: 200px;
 }
 
-
+.logo-footer{
+  width: 15%;
+  padding-top: 40px;
+}
+.text-footer{
+  padding-top: 20px;
+  margin: 0px auto;
+  color: white;
+  width: 400px;
+  font-size: 15px;
+}
+.name {
+  border-bottom: 1px white dotted;
+  color: white;
+}
+.name:hover {
+  border-bottom: none;
+  text-decoration: underline;
+  color: #19BC9C;
+}
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
