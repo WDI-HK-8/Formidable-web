@@ -1,6 +1,6 @@
 angular.module('formidable').controller('ModalInstanceCtrl', function($scope, $modalInstance, $http, $location) {
 
-  $scope.form = {};
+  $scope.form = {signature: false};
   $scope.createForm = function() {
     $http.post(url + '/users/' + $scope.user.id + '/forms',$scope.form).success(function(response) {
       console.log(response)

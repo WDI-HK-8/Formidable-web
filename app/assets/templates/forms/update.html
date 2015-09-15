@@ -3,8 +3,8 @@
   <div class="container-fluid wrap">
     
     <div class="dash-message text-center" id="formTitle">
-        <h3>{{ name }}</h3><a href=""><i class="fa fa-pencil" ng-click="open()"></i></a>
-        <p>Updated on: {{ updated | date:"dd/MM/yyyy 'at' h:mma" }}</p>
+        <h3>{{ form.name }}</h3><a href=""><i class="fa fa-pencil" ng-click="open()"></i></a>
+        <p>Updated on: {{ form.updated | date:"dd/MM/yyyy 'at' h:mma" }}</p>
         <a href="" ng-click="openPreview()" class="btn btn-primary">Preview</a>
     </div>
 
@@ -15,6 +15,9 @@
           <ul id="selections">
             <li ng-repeat="category in categories" ng-click="add(category)" class="btn">{{ category }}<i class="addContent fa fa-plus-square"></i></li>
           </ul>
+            <label> Require Signature:
+              <input type="checkbox" ng-model="form.signature" ng-click="signatureStatus()"> 
+            </label>
         </div>
 
         <div class="col-xs-6" id="listOfContents">

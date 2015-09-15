@@ -26,9 +26,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
 
   //List the contents
   $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
-    $scope.name = response.name;
-    $scope.created = response.created_at;
-    $scope.updated = response.updated_at;
+    $scope.form = response;
     response.contents.forEach(function(content) {
       $scope.fields.push(content);
     });
@@ -156,7 +154,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       $scope.options = [];
       $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
         $scope.fields = [];
-        $scope.name = response.name;
+        $scope.form = response;
         $scope.fields = response.contents;
       })
 
@@ -165,7 +163,14 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     });    
   }
 
-  //Drag and drop
+  //Set signature to true or false
+  $scope.signatureStatus = function() {
+    $http.patch(url + '/forms/' + $routeParams.id,$scope.form).success(function(response) {
+      console.log(response);
+    });
+  }
+
+  //Update index after drag and drop
   $scope.$on('bag-one.drop',function(e, el, source) {
     $timeout(function() {
       for(var i = 0; i < $scope.fields.length; i++){
@@ -179,8 +184,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
 
   //Catch the updated form name from the modalChangeNameCtrl
   $rootScope.$on('formName',function(data,args) {
-    $scope.name = args[0];
-  })
+    $scope.form.name = args[0];
+  });
 
   //Modal Preview
   $scope.openPreview = function() {
@@ -190,4 +195,6 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
       controller: 'ModalPreviewCtrl'
     });
   };
+
 }]);
+    
