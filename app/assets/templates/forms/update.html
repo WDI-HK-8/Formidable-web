@@ -37,11 +37,9 @@
 
             <div ng-if="field.category === 'textarea' ||  field.category === 'text' ">
               <h5>Label:</h5>
-              <form ng-submit="hideAndSaveEditPanel(field,input.labelInput)">
-                <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput" class="form-control flat">
-                <button type="submit" class="btn btn-inverse btn-properties">Save</button>
-                <button ng-click="quitEditPanel()" class="btn btn-inverse btn-properties">Cancel</button>
-              </form>
+              <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput" class="form-control flat">
+              <button type="submit" class="btn btn-inverse btn-properties" ng-click="hideAndSaveEditPanel(field,input.labelInput)">Save</button>
+              <button ng-click="quitEditPanel()" class="btn btn-inverse btn-properties">Cancel</button>
             </div>
 
             <div ng-if="field.category === 'dropdown' || field.category === 'checkbox' || field.category === 'radio'" class="multiChoice">
