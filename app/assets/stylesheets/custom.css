@@ -110,6 +110,16 @@ body {
   font-weight: 300;
 }
 
+footer {
+  width: 100%;
+  background-image: url("http://i59.tinypic.com/nvqhk2.png");
+  background-color: #33485F;
+  background-size: 210px;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+}
+
+
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
