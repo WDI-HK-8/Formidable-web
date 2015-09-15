@@ -151,6 +151,10 @@ footer {
   font-weight: 300;
 }
 
+.home-title a {
+  margin-top: 20px;
+}
+
 .wrap-home {
   background-color: #33485F;
   background-image: url("http://i61.tinypic.com/106k9yv.jpg");
