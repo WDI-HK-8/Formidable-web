@@ -43,7 +43,11 @@ class CompaniesController < ApplicationController
 
   def match
     @company = Company.where(code: params[:code])[0]
-    render 'show'
+    if @company.nil?
+      render json: {message: "Cannot find company"}, status: :not_found
+    else
+      render 'show'
+    end
   end
 
   private
