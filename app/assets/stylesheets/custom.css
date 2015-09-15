@@ -54,6 +54,18 @@ body {
   background-color: rgba(50,68,87,0.5);
 }
 
+#navbar-collapse-01 .btn-primary {
+  color: white;
+  padding: 10px 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+#navbar-collapse-01 .btn-primary:hover {
+  background-color: #16a085;
+  color: white;
+}
+
 #nav-title {
   font-style: italic;
   font-size: 23px;

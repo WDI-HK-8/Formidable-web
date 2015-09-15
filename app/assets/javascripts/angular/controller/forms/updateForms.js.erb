@@ -18,7 +18,7 @@ app.filter('orderFieldBy', function(){
 
 app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope','dragulaService', '$timeout', function($scope, $http, $auth, $location, $routeParams, $rootScope, dragulaService, $timeout){
 
-  $rootScope.title = 'Design';
+  $rootScope.title = 'Build';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
   $scope.categories = ['text','textarea','dropdown','checkbox','radio','description'] //All the categories of content available to add to your form
