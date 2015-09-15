@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 20150909021516) do
 
   create_table "forms", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "signature"
+    t.boolean  "signature_required"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "forms", ["user_id"], name: "index_forms_on_user_id", using: :btree
