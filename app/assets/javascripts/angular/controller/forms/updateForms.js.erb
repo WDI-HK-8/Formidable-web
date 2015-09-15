@@ -165,11 +165,6 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     });    
   }
 
-  //Go to the preview page
-  $scope.preview = function(){
-    $location.path('forms/' + $routeParams.id + '/preview');
-  }
-
   //Drag and drop
   $scope.$on('bag-one.drop',function(e, el, source) {
     $timeout(function() {
@@ -186,4 +181,13 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   $rootScope.$on('formName',function(data,args) {
     $scope.name = args[0];
   })
+
+  //Modal Preview
+  $scope.openPreview = function() {
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: "<%= asset_path('forms/modalPreviewForm.html') %>",
+      controller: 'ModalPreviewCtrl'
+    });
+  };
 }]);
