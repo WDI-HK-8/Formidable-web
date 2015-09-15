@@ -342,6 +342,10 @@ body {
   color: #33485F;
 }
 
+.wrap-preview h5 {
+  font-size: 18px;
+}
+
 #dropdown li{
   color: #33485F;
 }

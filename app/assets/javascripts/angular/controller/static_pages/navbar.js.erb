@@ -18,6 +18,7 @@ app.controller('NavbarCtrl', ['$scope', '$auth', '$location', '$window', '$rootS
 
   $scope.title = $rootScope.title;
 
+  // Show Save/Preview buttons if on the Build page
   $scope.showDesign = false;
   if ($rootScope.title == 'Build') {
     $scope.showDesign = true;
