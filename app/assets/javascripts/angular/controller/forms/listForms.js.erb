@@ -5,8 +5,13 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
 
   $scope.noForms = false;
   $scope.user = '';
+  $scope.company = {};
   $auth.validateUser().then(function(response) {
     $scope.user = response
+    $http.get(url + '/companies/' + response.company_id).success(function(company) {
+      $scope.company = company;
+      console.log($scope.company)
+    });
     $http.get(url + '/users/' + $scope.user.id + '/forms').success(function(resp) {
       $scope.forms = resp;
       if(!resp.length) {
@@ -32,6 +37,13 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
       animation: true,
       templateUrl: "<%= asset_path('forms/modalCreateForms.html') %>",
       controller: 'ModalInstanceCtrl'
+    });
+  };
+
+  $scope.updateCode = function() {
+    $http.put(url + '/companies/' + $scope.company.id).success(function(response) {
+      console.log(response)
+      $scope.company = response;
     });
   };
 

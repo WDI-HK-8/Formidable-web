@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @users = Company.users
+    @company = Company.find(params[:id])
   end
 
   def update
@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
       render json: {message: "Cannot find company"}, status: :not_found
     else
       if @company.update(code: code)
-        render json: {updated: true}
+        render 'show'
       else
         render json: {updated: false}, status: :bad_request
       end

@@ -1,7 +1,6 @@
-json.array! @users do |user|
-  json.id user.id
-  json.name user.name
-  json.email user.email
-  json.created_at user.created_at
-  json.updated_at user.updated_at
-end
+json.id @company.id
+json.name @company.name
+json.code @company.code
+json.created_at @company.created_at
+json.updated_at @company.created_at
+json.user @company.users

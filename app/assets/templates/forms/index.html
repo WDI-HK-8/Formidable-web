@@ -6,6 +6,9 @@
         <h3>Welcome to your dashboard</h3>
         <p>Create, edit, delete your forms as you wish and view the submissions.</p> 
       </div>
+      <div>
+        <label>Company Code: "{{ company.code }}"</label><button ng-click="updateCode()">Update</button>
+      </div>
       <div class="list-forms text-center">
         <button class="btn btn-primary btn-hg" ng-click="open()">
           New Form
