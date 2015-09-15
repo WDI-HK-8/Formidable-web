@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-  background-color: #33485F;
+  background-color: white;
 }
 
 .navbar-brand {
@@ -13,15 +13,66 @@ body {
 
 .navbar {
   margin-bottom: 0;
+  color: white;
+}
+
+.navbar-inverse .navbar-brand {
+  width: 210px;
+  background-image: url("http://i59.tinypic.com/nvqhk2.png");
+  background-size: 210px;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+}
+
+.navbar-dash .navbar-brand {
+  width: 210px;
+  background-image: url("http://i60.tinypic.com/2gxiddx.png");
+  background-size: 210px;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+}
+
+.navbar-dash {
+  background-color: white;
+  border-bottom: 1px solid #E2E2E2;
+  color: #34495e;
+}
+
+.navbar-dash a {
+  color: #34495e;
+}
+
+.navbar-dash a:hover {
+  color: #16a085;
+}
+
+.navbar-lg .navbar-nav > li > a {
+  font-size: 18px;
+}
+
+.navbar-inverse {
+  background-color: rgba(50,68,87,0.5);
+}
+
+#navbar-collapse-01 .btn-primary {
+  color: white;
+  padding: 10px 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+#navbar-collapse-01 .btn-primary:hover {
+  background-color: #16a085;
+  color: white;
 }
 
 #nav-title {
-  color: white;
   font-style: italic;
   font-size: 23px;
   position: absolute;
   top: 14px;
   right: 47vw;
+  font-weight: 300;
 }
 
 .wrap {
@@ -35,32 +86,42 @@ body {
   margin-top: 80px;
 }
 
+.home-title h3 {
+  font-weight: 300;
+}
+
 .wrap-home {
   background-color: #33485F;
+  background-image: url("http://i61.tinypic.com/106k9yv.jpg");
   width: 100%;
-  min-height: 600px;
+  height: 100%;
 }
+
 .wrap-dashboard {
-  background-color: white;
-  padding-top: 60px; 
+  background-color: #F5F5F5;
   height: 100%; 
 }
 
-.authPage {
-  color: white;
+.list-forms {
+  margin-bottom: 20px;
+}
+
+.list-forms h5 {
+  font-size: 18px;
 }
 
 .form-link {
   position: relative;
+  background-color: white;
   display: inline-block;
-  border: 1px solid black;
+  border: 1px solid #E2E2E2;
   height: 200px;
   width: 180px;
   margin: 20px;
-  padding: 20px;
   text-align: center;
   overflow: hidden;
   word-wrap: break-word;
+  box-shadow: 0px 1px 3px #D3D3D3;
 }
 
 .form-link > .delete {
@@ -87,13 +148,99 @@ body {
   width: 80%;
 }
 
-
-#selections{
-  padding: 0px;
+.form-title-box {
+  padding: 10%;
+  height: 80%;
+  vertical-align: middle;
 }
 
-#selections i{
+.form-title-box h4 {
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: 400;
+  color: #324457;
+}
+
+.form-title-box h4:hover {
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1abc9c;
+}
+
+.form-options {
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  height: 20%;
+  background-color: #E9EEF1;
+  padding: 5px 0px;
+}
+
+.form-options .view-submissions {
+  padding-right: 10%;
+  padding-left: 10%;
+  color: #324457;
+}
+
+.form-options .edit-form {
+  padding-right: 10%;
+  padding-left: 10%;
+  color: #324457;
+}
+
+.form-options .delete-form {
+  padding-right: 10%;
+  padding-left: 10%;
+  color: #324457;
+}
+
+.form-options a:hover {
+  color: #1abc9c;
+}
+
+#submission-sidebar {
+  padding: 0px;
+  height: 100vh;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.5);
+}
+
+#submission-sidebar .item {
+  width: 100%;
+  padding: 10px 20px;
+  padding-left: 30px;
+  border-bottom: 1px solid black;
+  color: rgb(52, 73, 94);
+}
+
+#submission-sidebar .item > h6{
+  margin-bottom: 0px;
+  font-size: 20px;
+}
+
+#submission-sidebar .item > p{
+  font-size: 15px;
+  opacity: 0.7;
+}
+
+#selections {
+  padding: 10px;
+  background-color: #324457;
+  border-radius: 4px;
+}
+
+#selections li {
+  color: white;
+  font-size: 18px;
+}
+
+#selections li:hover {
+  background-color: #1abc9c;
+}
+
+#selections i {
   float: right;
+  margin-top: 5px;
 } 
 
 #editForm .contentField{
@@ -104,13 +251,78 @@ body {
   list-style-type: none;
   width: 100%;
 }
-.field > a{
-  color: white;
-  font-size: 20px;
+
+#listOfContents ul{
+  border: 1px solid #E2E2E2;
+  padding: 20px;
+  border-radius: 4px;
 }
 
-#editForm ul{
-  text-align: center;
+#listOfContents .btn-field {
+  position: relative;
+  background-color: white;
+  border: 1px solid #E2E2E2;
+  box-shadow: 0px 1px 3px #D3D3D3;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #33485F;
+  font-size: 18px;
+}
+
+#listOfContents .btn-field.selected {
+  background-color: #1abc9c;
+  color: white;
+}
+
+
+#listOfContents li:hover {
+  border: 1px solid #1abc9c;
+  color: #1abc9c;
+}
+
+#listOfContents .btn-field p {
+  color: #E9EEF1;
+  margin-bottom: 0;
+}
+
+#listOfContents .btn-field i {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+}
+
+#editPanel .panel-categories {
+  padding: 10px;
+  background-color: #1abc9c;
+  border-radius: 4px;
+}
+
+#editPanel .panel-categories h5 {
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#editPanel .btn-properties {
+  margin-top: 15px;
+}
+
+#editPanel .field-option {
+  color: white;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+#editPanel .btn.input-group-addon {
+  background-color: #324457;
+  border: none;
+}
+
+#editPanel .field-option-delete {
+  float: right;
+  padding-top: 5px;
 }
 
 #editForm .deleteButton{

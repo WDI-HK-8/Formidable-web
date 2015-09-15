@@ -1,4 +1,4 @@
-app.controller('NavbarCtrl', ['$scope', '$auth', '$location', '$window', '$rootScope', function($scope, $auth, $location, $window, $rootScope){
+app.controller('NavbarHomeCtrl', ['$scope', '$auth', '$location', '$window', '$rootScope', function($scope, $auth, $location, $window, $rootScope){
   
   $auth.validateUser().then(function(response) {
     $scope.loggedIn = true;
@@ -17,9 +17,4 @@ app.controller('NavbarCtrl', ['$scope', '$auth', '$location', '$window', '$rootS
   };
 
   $scope.title = $rootScope.title;
-
-  $scope.showDesign = false;
-  if ($rootScope.title == 'Build') {
-    $scope.showDesign = true;
-  }
 }]);

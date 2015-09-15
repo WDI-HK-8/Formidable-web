@@ -18,20 +18,28 @@ app.filter('orderFieldBy', function(){
 
 app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope','dragulaService', '$timeout', function($scope, $http, $auth, $location, $routeParams, $rootScope, dragulaService, $timeout){
 
-  $rootScope.title = 'Design';
+  $rootScope.title = 'Build';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
 
-  $scope.categories = ['text','textarea','dropdown','checkboxes','radio','description'] //All the categories of content available to add to your form
+  $scope.categories = ['text','textarea','dropdown','checkbox','radio','description'] //All the categories of content available to add to your form
 
   $scope.fields = [] //All the contents in the form
 
   //List the contents
   $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
     $scope.name = response.name;
+    $scope.created = response.created_at;
+    $scope.updated = response.updated_at;
     response.contents.forEach(function(content) {
       $scope.fields.push(content);
-    })
+    });
   })
+
+  // Select a field
+  $scope.selectedRow = null;
+   $scope.setClickedRow = function(index){  //function that sets the value of selectedRow to current index
+      $scope.selectedRow = index;
+   }
 
   //Add a new content
   $scope.add = function(elem) {
