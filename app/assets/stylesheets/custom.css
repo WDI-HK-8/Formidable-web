@@ -341,6 +341,11 @@ footer {
   width: 100%;
 }
 
+#listOfContents h4 {
+  text-align: center;
+  color: #E7E6E4;
+}
+
 #listOfContents{
   margin-bottom: 100px;
 }
