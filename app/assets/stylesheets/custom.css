@@ -1,3 +1,4 @@
+
 body {
   background-color: white;
 }
@@ -322,15 +323,22 @@ footer {
 #selections li {
   color: white;
   font-size: 18px;
+  text-align: left;
 }
 
 #selections li:hover {
   background-color: #1abc9c;
 }
 
-#selections i {
+#selections .addContent {
   float: right;
   margin-top: 5px;
+}
+
+#selections .contentIcon {
+  float: left;
+  margin-top: 5px;
+  margin-right: 10px;
 } 
 
 #pencil{
