@@ -6,15 +6,21 @@
       <p>{{ submissions.length }} submissions</p>
     </div>
     <div class="row" id="table-row">
-      <h4 ng-show="noSubmissions">No Submissions</h4>
-      <table class="table table-bordered" id="submission-table" ng-hide="noSubmissions">
+      <table class="table table-bordered" id="submission-table">
         <tr>
           <th>Date</th>
-          <th ng-repeat="content in contents" ng-if="content.category != description">{{ content.label }}</th>
+          <th>Signed</th>
+          <th ng-repeat="content in contents" ng-if="content.category != 'description'">{{ content.label }}</th>
+        </tr>
+        <tr ng-show="noSubmissions">
+          <td>No Submissions</td>
+          <td ng-repeat="content in contents" ng-if="content.category != 'description'">No Submissions</td>
         </tr>
         <tr ng-repeat="submission in submissions">
-          <td>{{ submission.created_at | date:"dd/MM/yyyy ' ' h:mma" }}</td>
-          <td ng-repeat="answer in submission.answers">{{ answer.values.join(', ') }}</td>
+          <td>{{ submission.created_at | date: 'fullDate' }}</td>
+          <td ng-if="submission.signature != null"><a href="{{ submission.signature }}">True</a></td>
+          <td ng-if="submission.signature == null">True</td>
+          <td ng-repeat="answer in values[submission.id] track by $index">{{ answer }}</td>
         </tr>
       </table>
     </div>
