@@ -40,6 +40,6 @@ class FormsController < ApplicationController
   private
 
   def form_params
-    params.require(:form).permit(:name)
+    params.require(:form).permit(:name,:signature_required)
   end
 end
