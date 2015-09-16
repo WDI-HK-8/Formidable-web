@@ -24,6 +24,9 @@ app.controller('ListFormsCtrl', ['$scope', '$http','$auth','$location','$rootSco
         console.log(response);
       });
     }
+    if(!$scope.forms.length) {
+      $scope.noForms = true;
+    }
   };
 
   //Modal 

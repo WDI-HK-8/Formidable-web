@@ -1,4 +1,3 @@
-
 body {
   background-color: white;
 }
@@ -131,7 +130,7 @@ footer {
   color: #19BC9C;
 }
 .wrap {
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -161,6 +160,13 @@ footer {
 .wrap-dashboard {
   background-color: #F5F5F5;
   height: 100%; 
+}
+
+#noForm{
+  font-size: 50px;
+  color: #E7E6E4;
+  text-align: center;
+  padding-top: 40px;
 }
 
 .list-forms {
