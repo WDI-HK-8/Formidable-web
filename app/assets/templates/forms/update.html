@@ -4,8 +4,8 @@
     
     <div class="container">
       <div class="dash-message text-center" id="formTitle">
-        <h3>{{ form.name }}<span id="pencil"><a href=""><i class="fa fa-pencil" ng-click="open()"></i></a></span></h3>
-        <p>Updated on: {{ form.updated | date:"dd/MM/yyyy 'at' h:mma" }}</p>
+        <h3>{{ form.name }}</h3><a href=""><i class="fa fa-pencil" ng-click="open()" popover="Edit the name" popover-trigger="mouseenter" popover-append-to-body="true" popover-placement="right"></i></a>
+        <p>Updated on: {{ form.updated_at | date:"dd/MM/yyyy 'at' h:mma" }}</p>
         <a href="" ng-click="openPreview()" class="btn btn-primary">Preview</a>
       </div>
     </div>
