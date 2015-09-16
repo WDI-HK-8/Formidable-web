@@ -11,7 +11,7 @@
           New Form
         </button>
       </div>
-      <h4 ng-show="noForms">No Forms</h4>
+      <h4 ng-show="noForms" id="noForm">You don't have any forms</h4>
       <div class="form-link" ng-repeat="form in forms track by $index" ng-mouseover="showOptions=true" ng-mouseleave="showOptions=false">
         <a href="/#/forms/{{ form.id }}/edit">
           <div class="form-title-box">
