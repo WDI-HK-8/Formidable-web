@@ -1,0 +1,14 @@
+app.directive('scroll', ['$window', function($window){
+  return function(scope, element, attrs) {
+    angular.element($window).bind("scroll", function() {
+      console.log(this.pageYOffset);
+
+       if (this.pageYOffset >= 267) {
+         scope.shouldStickToTop = true;
+       } else {
+         scope.shouldStickToTop = false;
+       }
+      scope.$apply();
+    });
+  };
+}]);
