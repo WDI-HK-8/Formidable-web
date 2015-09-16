@@ -374,10 +374,24 @@ footer {
   margin-bottom: 0;
 }
 
-#listOfContents .btn-field i {
+#listOfContents .contentField i {
   position: absolute;
   top: 10%;
   right: 2%;
+}
+
+#listOfContents .contentField a {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  padding: 15px;
+}
+
+#listOfContents .contentField a:hover {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  padding: 15px;
 }
 
 #editPanel{

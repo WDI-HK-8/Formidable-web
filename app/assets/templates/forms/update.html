@@ -26,7 +26,7 @@
             <li ng-repeat="field in fields | orderFieldBy:'index'" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="btn btn-field" ng-click="setClickedRow(field.index); displayEditPanel(field)" ng-class="{selected : field.index == selectedRow}">
               {{ field.label }}
               <p>({{ field.category }})</p>
-              <i ng-click="delete(field)" class="fa fa-times deleteButton" ng-show="!editPanelVisible && showButtons"></i>
+              <a href="" ng-click="delete(field)" ng-show="!editPanelVisible && showButtons"><i class="fa fa-times deleteButton"></i></a>
             </li>
           </ul>
         </div>
