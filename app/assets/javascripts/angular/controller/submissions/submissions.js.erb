@@ -25,7 +25,6 @@ app.controller('SubmissionsIndexCtrl', ['$scope', '$http','$auth','$location','$
         callback(answerIndex);
       }
     });
-    callback(-1);
   };
 
   $http.get(url + '/forms/' + $routeParams.id).success(function(form) {
@@ -47,16 +46,17 @@ app.controller('SubmissionsIndexCtrl', ['$scope', '$http','$auth','$location','$
       $scope.submissions.forEach(function(submission) {
         var data = {Date: submission.created_at,Signature: submission.signature || 'None'}
         var newValues = [];
-        var index = 0;
         $scope.contents.forEach(function(content,contentIndex) {
           if(content.category != 'description') {
-            var check = submission.answers[index].values.join(', ');
-            if(check == '') {
-              check = '-';
-            }
-            newValues.push(check);
-            data[$scope.contents[contentIndex].label] = check;
-            index++;
+            siftAnswers(submission.answers,content.id,function(answerIndex) {
+              console.log(submission.answers[answerIndex])
+              var check = submission.answers[answerIndex].values.join(', ');
+              if(check == '') {
+                check = '-';
+              }
+              newValues.push(check);
+              data[$scope.contents[contentIndex].label] = check;
+            });
           }
         });
         $scope.values[submission.id] = newValues;
