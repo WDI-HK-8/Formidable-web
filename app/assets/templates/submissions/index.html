@@ -1,19 +1,23 @@
 <navbar></navbar>
 <div class="wrap-dashboard">
   <div class="container-fluid wrap">
+    <div class="dash-message text-center">
+      <h3>{{ form.name }}</h3>
+      <p>{{ submissions.length }} submissions</p>
+    </div>
     <div class="row" id="table-row">
       <h4 ng-show="noSubmissions">No Submissions</h4>
       <table class="table table-bordered" id="submission-table" ng-hide="noSubmissions">
         <tr>
-          <td>Date</td>
-          <td ng-repeat="content in contents" ng-if="content.category != description">{{ content.label }}</td>
+          <th>Date</th>
+          <th ng-repeat="content in contents" ng-if="content.category != description">{{ content.label }}</th>
         </tr>
         <tr ng-repeat="submission in submissions">
-          <td>{{ submission.created_at | date: 'fullDate' }}</td>
+          <td>{{ submission.created_at | date:"dd/MM/yyyy ' ' h:mma" }}</td>
           <td ng-repeat="answer in submission.answers">{{ answer.values.join(', ') }}</td>
         </tr>
       </table>
     </div>
-    <button ng-csv="exportation" filename="{{ form.name }}.csv" csv-header="headers">Export</button>
   </div>
 </div>
+<footer></footer>

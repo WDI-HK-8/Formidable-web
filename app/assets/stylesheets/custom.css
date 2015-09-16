@@ -151,6 +151,10 @@ footer {
   font-weight: 300;
 }
 
+.home-title a {
+  margin-top: 20px;
+}
+
 .wrap-home {
   background-color: #33485F;
   background-image: url("http://i61.tinypic.com/106k9yv.jpg");
@@ -287,6 +291,16 @@ footer {
 #submission-sidebar .item > p{
   font-size: 15px;
   opacity: 0.7;
+}
+
+#formTitle a i {
+  position: relative;
+  top: -20px;
+  right: -20px;
+}
+
+#formTitle h3 {
+  display: inline-block;
 }
 
 #selections {
@@ -436,13 +450,26 @@ footer {
 
 #table-row {
   overflow: scroll;
+  margin-top: 20px;
 }
 
-#submission-table tr:first-child {
-  font-style: oblique;
+#table-row table {
+  border-collapse: collapse;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+#submission-table th {
+  text-align: center;
+  padding: 5px;
+  vertical-align: middle;
+  background-color: #E9EEF1;
 }
 
 #submission-table tr {
   text-align: center;
+  padding: 5px;
+  vertical-align: middle;
 }
 

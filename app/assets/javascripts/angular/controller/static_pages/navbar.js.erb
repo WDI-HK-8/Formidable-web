@@ -23,4 +23,10 @@ app.controller('NavbarCtrl', ['$scope', '$auth', '$location', '$window', '$rootS
   if ($rootScope.title == 'Build') {
     $scope.showDesign = true;
   }
+
+  // Show Export buttons if on Submissions page
+  $scope.showSubmissions = false;
+  if ($rootScope.title == 'Submissions') {
+    $scope.showSubmissions = true;
+  }
 }]);
