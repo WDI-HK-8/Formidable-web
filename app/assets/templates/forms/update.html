@@ -2,10 +2,12 @@
 <div class="wrap-dashboard" id="editForm">
   <div class="container-fluid wrap">
     
-    <div class="dash-message text-center" id="formTitle">
-        <h3>{{ form.name }}</h3><a href=""><i class="fa fa-pencil" ng-click="open()"></i></a>
-        <p>Updated on: {{ form.updated | date:"dd/MM/yyyy 'at' h:mma" }}</p>
+    <div class="container">
+      <div class="dash-message text-center" id="formTitle">
+        <h3>{{ name }}<span id="pencil"><a href=""><i class="fa fa-pencil" ng-click="open()"></i></a></span></h3>
+        <p>Updated on: {{ updated | date:"dd/MM/yyyy 'at' h:mma" }}</p>
         <a href="" ng-click="openPreview()" class="btn btn-primary">Preview</a>
+      </div>
     </div>
 
     <div class="row">
@@ -20,10 +22,10 @@
             </label>
         </div>
 
-        <div class="col-xs-6" id="listOfContents">
+        <div class="col-xs-6 col-xs-offset-3" id="listOfContents">
           <h5>Form fields</h5>
           <ul class="contentField" dragula='"bag-one"' dragula-model="fields">
-            <li ng-repeat="field in fields | orderFieldBy:'index'" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="btn btn-field" ng-click="setClickedRow($index); displayEditPanel(field)" ng-class="{selected : $index == selectedRow}">
+            <li ng-repeat="field in fields | orderFieldBy:'index'" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="btn btn-field" ng-click="setClickedRow(field.index); displayEditPanel(field)" ng-class="{selected : field.index == selectedRow}">
               {{ field.label }}
               <p>({{ field.category }})</p>
               <i ng-click="delete(field)" class="fa fa-times deleteButton" ng-show="!editPanelVisible && showButtons"></i>
@@ -31,17 +33,15 @@
           </ul>
         </div>
 
-        <div class="col-xs-3" ng-show="editPanelVisible" id="editPanel">
+        <div class="col-xs-3 col-xs-offset-9" ng-show="editPanelVisible" id="editPanel">
           <h5>Properties</h5>
           <div class="panel-categories">
 
             <div ng-if="field.category === 'textarea' ||  field.category === 'text' ">
               <h5>Label:</h5>
-              <form ng-submit="hideAndSaveEditPanel(field,input.labelInput)">
-                <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput" class="form-control flat">
-                <button type="submit" class="btn btn-inverse btn-properties">Save</button>
-                <button ng-click="quitEditPanel()" class="btn btn-inverse btn-properties">Cancel</button>
-              </form>
+              <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput" class="form-control flat">
+              <button type="submit" class="btn btn-inverse btn-properties" ng-click="hideAndSaveEditPanel(field,input.labelInput)">Save</button>
+              <button ng-click="quitEditPanel()" class="btn btn-inverse btn-properties">Cancel</button>
             </div>
 
             <div ng-if="field.category === 'dropdown' || field.category === 'checkbox' || field.category === 'radio'" class="multiChoice">
@@ -65,7 +65,7 @@
                 <h5>Label:</h5>
                 <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput" class="form-control flat">
                 <h5>Text:</h5>
-                <input placeholder="your text here" autocomplete ng-model="input.textInput" class="form-control flat">
+                <textarea rows="10" cols="50" placeholder="your text here" autocomplete ng-model="input.textInput" class="form-control flat textInput"></textarea>
                 <button type="submit" ng-click="addDescription(input.textInput)" class="btn btn-inverse btn-properties">Save</button>
                 <button ng-click="quitEditPanel()" class="btn btn-inverse btn-properties">Cancel</button>
               </form>

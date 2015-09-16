@@ -1,7 +1,3 @@
-html, body {
-  height: 100%;
-  width: 100%;
-}
 
 body {
   background-color: white;
@@ -139,11 +135,13 @@ footer {
   color: #19BC9C;
 }
 .wrap {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  height: 100%;
 }
 
+#dashboard-wrapper{
+  margin-bottom: 200px;
+}
 .home-title {
   color: white;
   margin-top: 80px;
@@ -157,7 +155,7 @@ footer {
   background-color: #33485F;
   background-image: url("http://i61.tinypic.com/106k9yv.jpg");
   width: 100%;
-  height: 100%;
+  min-height: 800px;
 }
 
 .wrap-dashboard {
@@ -262,6 +260,11 @@ footer {
   color: #1abc9c;
 }
 
+#sidebar{
+  position: fixed;
+}
+
+
 #submission-sidebar {
   padding: 0px;
   height: 100vh;
@@ -306,6 +309,11 @@ footer {
   margin-top: 5px;
 } 
 
+#pencil{
+  font-size: 20px;
+  margin-left: 20px;
+}
+
 #editForm .contentField{
   position: relative;
 }
@@ -313,6 +321,10 @@ footer {
 #editForm li{
   list-style-type: none;
   width: 100%;
+}
+
+#listOfContents{
+  margin-bottom: 100px;
 }
 
 #listOfContents ul{
@@ -352,6 +364,11 @@ footer {
   position: absolute;
   top: 10%;
   right: 2%;
+}
+
+#editPanel{
+  margin-bottom: 40px;
+  position: fixed;
 }
 
 #editPanel .panel-categories {
