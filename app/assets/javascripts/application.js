@@ -19,5 +19,5 @@
 //= require ng-csv/build/ng-csv
 //= require ng-token-auth/dist/ng-token-auth
 //= require angular-cookie/angular-cookie
-//= require angular-dragula/dist/angular-dragula
+//= require angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js
 //= require_tree .

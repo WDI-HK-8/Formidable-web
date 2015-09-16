@@ -31,9 +31,18 @@
 
         <div class="col-xs-6" id="listOfContents" ng-class="{'col-xs-offset-3': shouldStickToTop}">
           <h5>Form fields</h5>
-          <ul class="contentField" dragula='"bag-one"' dragula-model="fields">
-            <h4 ng-show="!fields.length">Add a form field</h4>
-            <li ng-repeat="field in fields | orderFieldBy:'index'" ng-mouseover="showButtons = true" ng-mouseleave="showButtons = false" class="btn btn-field" ng-click="setClickedRow(field.index); displayEditPanel(field)" ng-class="{selected : field.index == selectedRow}">
+          <h4 ng-show="!fields.length">Add a form field</h4>
+          <ul ng-show="fields.length" dnd-list="fields" class="contentField">
+            <li ng-repeat="field in fields | orderFieldBy: index" 
+                ng-mouseover="showButtons = true" 
+                ng-mouseleave="showButtons = false" 
+                class="btn btn-field" 
+                ng-click="setClickedRow(field.index); displayEditPanel(field)" 
+                dnd-draggable="field" 
+                dnd-moved="fields.splice($index, 1); move();" 
+                dnd-effect-allowed="move" 
+                dnd-selected="models.selected = field" 
+                ng-class="{'selected': models.selected === field}">
               {{ field.label }}
               <p>({{ field.category }})</p>
               <a href="" ng-click="delete(field)" ng-show="!editPanelVisible && showButtons"><i class="fa fa-times deleteButton"></i></a>
