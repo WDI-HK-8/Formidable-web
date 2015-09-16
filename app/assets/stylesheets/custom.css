@@ -261,7 +261,7 @@ footer {
 }
 
 #sidebar{
-  position: fixed;
+  
 }
 
 
@@ -401,7 +401,6 @@ footer {
 
 #editPanel{
   margin-bottom: 40px;
-  position: fixed;
 }
 
 #editPanel .panel-categories {
