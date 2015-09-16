@@ -474,6 +474,7 @@ footer {
 #table-row {
   overflow: scroll;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #table-row table {
@@ -481,6 +482,11 @@ footer {
   font-size: 14px;
   border: 1px solid #ddd;
   background-color: white;
+}
+
+#table-row h4 {
+  text-align: center;
+  color: #E7E6E4;
 }
 
 #submission-table th {
