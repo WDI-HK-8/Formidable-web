@@ -52,12 +52,10 @@ app.controller('SubmissionsIndexCtrl', ['$scope', '$http','$auth','$location','$
           if(content.category != 'description') {
             var check = submission.answers[index].values.join(', ');
             if(check == '') {
-              newValues.push('-');
-              data[$scope.contents[contentIndex].label] = '-';
-            } else {
-              newValues.push(submission.answers[index].values.join(', '));
-              data[$scope.contents[contentIndex].label] = check;
+              check = '-';
             }
+            newValues.push(check);
+            data[$scope.contents[contentIndex].label] = check;
             index++;
           }
         });
