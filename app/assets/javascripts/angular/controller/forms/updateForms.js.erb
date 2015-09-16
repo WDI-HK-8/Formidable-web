@@ -15,7 +15,7 @@ app.filter('orderFieldBy', function(){
  }
 });
 
-app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope','dragulaService', '$timeout', '$modal', '$window', function($scope, $http, $auth, $location, $routeParams, $rootScope, dragulaService, $timeout, $modal, $window){
+app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope', '$timeout', '$modal', '$window', function($scope, $http, $auth, $location, $routeParams, $rootScope, $timeout, $modal, $window){
 
   $rootScope.title = 'Build';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
@@ -104,6 +104,8 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   
   //Show Edit panel
   $scope.displayEditPanel = function(field){
+    console.log(field);
+
     $http.get(url + '/contents/' + field.id).success(function(response){
       $scope.editPanelVisible = true;
       $scope.field = response;
@@ -147,19 +149,19 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     $scope.updatedContent = {
       label: labelInput,
       options: $scope.options,
-      category: field.category,
-      index: field.index
+      category: field.category
     };
-    console.log($scope.updatedContent);
-    $http.put(url + '/contents/' + field.id,$scope.updatedContent).success(function(response) {
+    $http.patch(url + '/contents/' + field.id, $scope.updatedContent).success(function(response) {
       $scope.editPanelVisible = false;
       $scope.options = [];
       $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
         $scope.fields = [];
+        console.log('This is the resp from the get req',response)
         $scope.form = response;
         $scope.fields = response.contents;
       })
       $scope.selectedRow = null;
+      console.log('This is after the put function',$scope.fields)
 
     }).error(function(response){
       console.log(response);
@@ -173,17 +175,15 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     });
   }
 
-  //Update index after drag and drop
-  $scope.$on('bag-one.drop',function(e, el, source) {
-    $timeout(function() {
-      for(var i = 0; i < $scope.fields.length; i++){
-        $scope.fields[i].index = i
-        var content = $scope.fields[i];
-        $http.put(url + '/contents/' + content.id,content).success(function(response) {
-        });
-      }
-    },1000)
-  })
+  $scope.move = function(){ 
+    for(var i = 0; i < $scope.fields.length; i++){
+      var content = $scope.fields[i];
+      content.index = i;
+      $http.put(url + '/contents/' + content.id,content).success(function(response) {
+      });
+    };
+    console.log($scope.fields)
+  }
 
   //Catch the updated form name from the modalChangeNameCtrl
   $rootScope.$on('formName',function(data,args) {
@@ -200,8 +200,6 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   };
 
   angular.element($window).bind("scroll", function() {
-    console.log(this.pageYOffset);
-
      if (this.pageYOffset >= 249) {
        $scope.shouldStickToTop = true;
      } else {

@@ -6,7 +6,6 @@
   "dependencies": {
     "angular": "~1.4.5",
     "angular-cookie": "~4.0.9",
-    "angular-dragula": "~1.0.12",
     "angular-route": "~1.4.5",
     "angular-sanitize": "~1.4.5",
     "bootstrap": "~3.3.5",
@@ -14,7 +13,7 @@
     "jquery": "~2.1.4",
     "ng-token-auth": "~0.0.28",
     "ng-csv": "~0.3.4",
-    "ng-token-auth": "~0.0.28",
-    "angular-bootstrap": "~0.13.4"
+    "angular-bootstrap": "~0.13.4",
+    "angular-drag-and-drop-lists": "~1.3.0"
   }
 }
