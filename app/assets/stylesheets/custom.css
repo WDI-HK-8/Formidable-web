@@ -139,6 +139,10 @@ footer {
   margin: 0 auto;
 }
 
+.submissionWrapper{
+  min-height: 700px;
+}
+
 #dashboard-wrapper{
   margin-bottom: 200px;
 }
