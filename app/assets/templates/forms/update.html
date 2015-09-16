@@ -15,9 +15,9 @@
           <ul id="selections">
             <li ng-repeat="category in categories" ng-click="add(category)" class="btn">{{ category }}<i class="addContent fa fa-plus-square"></i></li>
           </ul>
-            <label> Require Signature:
-              <input type="checkbox" ng-model="form.signature_required" ng-click="signatureStatus()"> 
-            </label>
+          <div class="sign-box text-center">
+            <h5>Require Signature: <input type="checkbox" ng-model="form.signature_required" ng-click="signatureStatus()"></h5>
+          </div>
         </div>
 
         <div class="col-xs-6 col-xs-offset-3" id="listOfContents">
@@ -63,7 +63,7 @@
                 <h5>Label:</h5>
                 <input placeholder="label for {{field.category}}" autocomplete ng-model="input.labelInput" class="form-control flat">
                 <h5>Text:</h5>
-                <textarea rows="10" cols="50" placeholder="your text here" autocomplete ng-model="input.textInput" class="form-control flat textInput"></textarea>
+                <textarea rows="6" cols="50" placeholder="your text here" autocomplete ng-model="input.textInput" class="form-control flat textInput"></textarea>
                 <button type="submit" ng-click="addDescription(input.textInput)" class="btn btn-inverse btn-properties">Save</button>
                 <button ng-click="quitEditPanel()" class="btn btn-inverse btn-properties">Cancel</button>
               </form>

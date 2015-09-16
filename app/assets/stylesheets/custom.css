@@ -303,6 +303,10 @@ footer {
   display: inline-block;
 }
 
+#formTitle h5 {
+  font-size: 18px;
+}
+
 #selections {
   padding: 10px;
   background-color: #324457;
