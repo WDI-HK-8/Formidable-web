@@ -15,7 +15,14 @@
         <div class="col-xs-3" id="sidebar">
           <h5>Field types</h5>
           <ul id="selections">
-            <li ng-repeat="category in categories" ng-click="add(category)" class="btn">{{ category }}<i class="addContent fa fa-plus-square"></i></li>
+            <li ng-repeat="category in categories" ng-click="add(category)" class="btn">
+            <i ng-if="category == 'text'" class="fa fa-font fa-fw contentIcon"></i>
+            <i ng-if="category == 'textarea'" class="fa fa-text-height fa-fw contentIcon"></i>
+            <i ng-if="category == 'dropdown'" class="fa fa-list-ul fa-fw contentIcon"></i>
+            <i ng-if="category == 'checkbox'" class="fa fa-check-square-o fa-fw contentIcon"></i>
+            <i ng-if="category == 'radio'" class="fa fa-dot-circle-o fa-fw contentIcon"></i>
+            <i ng-if="category == 'description'" class="fa fa-align-left fa-fw contentIcon"></i>
+            {{ category }}<i class="addContent fa fa-plus-square"></i></li>
           </ul>
           <div class="sign-box text-center">
             <h5>Require Signature: <input type="checkbox" ng-model="form.signature_required" ng-click="signatureStatus()"></h5>
