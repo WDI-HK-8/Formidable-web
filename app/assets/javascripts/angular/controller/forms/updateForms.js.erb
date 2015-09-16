@@ -159,6 +159,7 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
         console.log('This is the resp from the get req',response)
         $scope.form = response;
         $scope.fields = response.contents;
+        $scope.fields.sort(compare);
       })
       $scope.selectedRow = null;
       console.log('This is after the put function',$scope.fields)
