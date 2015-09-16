@@ -18,8 +18,8 @@
         </tr>
         <tr ng-repeat="submission in submissions">
           <td>{{ submission.created_at | date: 'fullDate' }}</td>
-          <td ng-if="submission.signature != null"><a href="{{ submission.signature }}">True</a></td>
-          <td ng-if="submission.signature == null">True</td>
+          <td ng-if="submission.signature != null"><a href="{{ submission.signature }}">Yes</a></td>
+          <td ng-if="submission.signature == null">No</td>
           <td ng-repeat="answer in values[submission.id] track by $index">{{ answer }}</td>
         </tr>
       </table>
