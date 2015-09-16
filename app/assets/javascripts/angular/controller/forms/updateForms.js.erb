@@ -142,6 +142,13 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
   $scope.quitEditPanel = function(){
     $scope.editPanelVisible = false;
     $scope.selectedRow = null;
+    $http.get(url + '/forms/' + $routeParams.id).success(function(response) {
+      $scope.fields = [];
+      console.log('This is the resp from the get req',response)
+      $scope.form = response;
+      $scope.fields = response.contents;
+      $scope.fields.sort(compare);
+    })
   }
 
   //Update and hide options
