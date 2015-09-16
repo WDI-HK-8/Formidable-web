@@ -15,7 +15,7 @@ app.filter('orderFieldBy', function(){
  }
 });
 
-app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope','dragulaService', '$timeout', '$modal', function($scope, $http, $auth, $location, $routeParams, $rootScope, dragulaService, $timeout, $modal){
+app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams','$rootScope','dragulaService', '$timeout', '$modal', '$window', function($scope, $http, $auth, $location, $routeParams, $rootScope, dragulaService, $timeout, $modal, $window){
 
   $rootScope.title = 'Build';
   url = "<%= ENV['URL'] %>" || 'http://localhost:3000'
@@ -199,5 +199,15 @@ app.controller('FormsUpdateCtrl', ['$scope', '$http', '$auth', '$location', '$ro
     });
   };
 
+  angular.element($window).bind("scroll", function() {
+    console.log(this.pageYOffset);
+
+     if (this.pageYOffset >= 267) {
+       $scope.shouldStickToTop = true;
+     } else {
+       $scope.shouldStickToTop = false;
+     }
+    $scope.$apply();
+  });
 }]);
     
