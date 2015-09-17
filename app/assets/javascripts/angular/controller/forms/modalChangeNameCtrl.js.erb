@@ -10,7 +10,7 @@ angular.module('formidable').controller('ModalChangeNameCtrl', ['$scope','$modal
     $http.put(url + '/forms/' + $routeParams.id ,$scope.form).success(function(response) {
        
     }).error(function(response){
-      alert("write something you douche");
+      alert("Please choose a valid form name");
     });
   }
 

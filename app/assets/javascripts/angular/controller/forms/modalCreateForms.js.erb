@@ -8,10 +8,10 @@ angular.module('formidable').controller('ModalInstanceCtrl',['$scope','$modalIns
         $location.path('forms/' + response.id + '/edit');
       } else {
         $scope.form.name = ' ';
-        alert("write a better name you douche");
+        alert("Please choose a valid form name");
       }
     }).error(function(response){
-      alert("write something you douche");
+      alert("Please choose a valid form name");
     });
   }
 
